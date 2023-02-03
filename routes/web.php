@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Property;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +25,9 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('properties', PropertyController::class)->parameters([
+        'properties' => 'property:slug'
+    ]);
 });
 
 require __DIR__ . '/auth.php';
