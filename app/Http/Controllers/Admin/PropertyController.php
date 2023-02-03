@@ -16,7 +16,9 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        //
+        $properties = Property::orderByDesc('id')->paginate(8);
+
+        return view('admin.properties.index', compact('properties'));
     }
 
     /**
@@ -26,7 +28,7 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.properties.create');
     }
 
     /**
