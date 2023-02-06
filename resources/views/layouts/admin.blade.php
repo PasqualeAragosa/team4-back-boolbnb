@@ -72,6 +72,13 @@
                                     Dashboard
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{Route::currentRouteName() === 'admin.projects.index' ? 'active': ''}}" href="{{route('admin.properties.index')}}">
+                                    <span data-feather="file" class="align-text-bottom"></span>
+                                    <i class="fas fa-pencil fa-sm fa-fw"></i>
+                                    Properties
+                                </a>
+                            </li>
 
                         </ul>
                     </div>

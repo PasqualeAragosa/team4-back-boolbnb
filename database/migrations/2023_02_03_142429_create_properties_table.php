@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('state')->nullable();
             $table->string('image')->nullable();
             $table->text('description')->nullable();
-            $table->boolean('visibility')->default(1);
+            $table->boolean('visibility')->default(0);
             $table->float('longitude', 8, 6)->nullable();
             $table->float('latitude', 8, 6)->nullable();
             $table->timestamps();
