@@ -6,7 +6,7 @@
 <div class="container">
     <h1>Create a New Project</h1>
     @include('partials.errors')
-    <form action="#" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.properties.store')}}" method="post" enctype="multipart/form-data">
         @csrf
 
         <!-- Title -->

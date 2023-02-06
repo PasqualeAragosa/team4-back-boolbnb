@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdatePropertyRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdatePropertyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,17 @@ class UpdatePropertyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => ['required', Rule::unique('properties')->ignore($this->property), 'min:5', 'max:100'],
+            'price' => 'nullable',
+            'rooms_num' => 'nullable|numeric',
+            'beds_num' => 'nullable|numeric',
+            'baths_num' => 'nullable|numeric',
+            'square_meters' => 'nullable|numeric',
+            'street' => 'nullable|min:2|max:60',
+            'city' => 'nullable|min:2|max:60',
+            'state' => 'nullable|min:2|max:60',
+            'image' => 'nullable|image|max:300',
+            'description' => 'nullable',
         ];
     }
 }
