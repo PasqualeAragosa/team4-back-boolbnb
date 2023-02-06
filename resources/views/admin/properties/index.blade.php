@@ -35,6 +35,7 @@
                 <th>Visibility</th>
                 <th>Longitude</th>
                 <th>Latitude</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody class="table-group-divider">
