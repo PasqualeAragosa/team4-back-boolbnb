@@ -20,7 +20,7 @@
         <!-- Price -->
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
-            <input type="text" name="price" id="price" class="form-control @error('price') is-invalid @enderror" placeholder="Write Title" aria-describedby="helpRooms_num" value="{{old('price')}}">
+            <input type="number" name="price" id="price" class="form-control @error('price') is-invalid @enderror" placeholder="Write Title" aria-describedby="helpRooms_num" value="{{old('price')}}">
             <small id="helpPrice" class="text-muted">Please Enter The Price</small>
         </div>
         <!-- /.Price -->
@@ -28,32 +28,32 @@
 
         <!-- Rooms_num -->
         <div class="mb-3">
-            <label for="rooms_num" class="form-label">Rooms_num</label>
-            <input type="text" name="rooms_num" id="rooms_num" class="form-control @error('rooms_num') is-invalid @enderror" placeholder="Write Title" aria-describedby="helpRooms_num" value="{{old('rooms_num')}}">
+            <label for="rooms_num" class="form-label">Rooms</label>
+            <input type="number" name="rooms_num" id="rooms_num" class="form-control @error('rooms_num') is-invalid @enderror" placeholder="Write Title" aria-describedby="helpRooms_num" value="{{old('rooms_num')}}">
             <small id="helpRooms_num" class="text-muted">Please Enter The Rooms_num</small>
         </div>
         <!-- /.Rooms_num -->
 
         <!-- Beds_num -->
         <div class="mb-3">
-            <label for="beds_num" class="form-label">Beds_num</label>
-            <input type="text" name="beds_num" id="beds_num" class="form-control @error('beds_num') is-invalid @enderror" placeholder="Write Title" aria-describedby="helpBeds_num" value="{{old('beds_num')}}">
+            <label for="beds_num" class="form-label">Beds</label>
+            <input type="number" name="beds_num" id="beds_num" class="form-control @error('beds_num') is-invalid @enderror" placeholder="Write Title" aria-describedby="helpBeds_num" value="{{old('beds_num')}}">
             <small id="helpBeds_num" class="text-muted">Please Enter The Beds_num</small>
         </div>
         <!-- /.Beds_num -->
 
         <!-- Baths_num -->
         <div class="mb-3">
-            <label for="baths_num" class="form-label">Baths_num</label>
-            <input type="text" name="baths_num" id="baths_num" class="form-control @error('baths_num') is-invalid @enderror" placeholder="Write Title" aria-describedby="helpBaths_num" value="{{old('baths_num')}}">
+            <label for="baths_num" class="form-label">Baths</label>
+            <input type="number" name="baths_num" id="baths_num" class="form-control @error('baths_num') is-invalid @enderror" placeholder="Write Title" aria-describedby="helpBaths_num" value="{{old('baths_num')}}">
             <small id="helpBaths_num" class="text-muted">Please Enter The Baths_num</small>
         </div>
         <!-- /.Baths_num -->
 
         <!-- Square_meters -->
         <div class="mb-3">
-            <label for="square_meters" class="form-label">Square_meters</label>
-            <input type="text" name="square_meters" id="square_meters" class="form-control @error('square_meters') is-invalid @enderror" placeholder="Write Title" aria-describedby="helpSquare_meters" value="{{old('square_meters')}}">
+            <label for="square_meters" class="form-label">Square meters</label>
+            <input type="number" name="square_meters" id="square_meters" class="form-control @error('square_meters') is-invalid @enderror" placeholder="Write Title" aria-describedby="helpSquare_meters" value="{{old('square_meters')}}">
             <small id="helpSquare_meters" class="text-muted">Please Enter The Square_meters</small>
         </div>
         <!-- /.Square_meters -->
@@ -82,14 +82,6 @@
         </div>
         <!-- /.State -->
 
-        <!-- State -->
-        <div class="mb-3">
-            <label for="state" class="form-label">State</label>
-            <input type="text" name="state" id="state" class="form-control @error('state') is-invalid @enderror" placeholder="Write Title" aria-describedby="helpState" value="{{old('state')}}">
-            <small id="helpState" class="text-muted">Please Enter The State</small>
-        </div>
-        <!-- /.State -->
-
         <!-- Image -->
         <div class="mb-3">
             <label for="image" class="form-label">Image</label>
@@ -108,9 +100,13 @@
 
 
         <!-- Visibility -->
-        <label for="visibility" class="form-label">Visibility</label>
-        <input type="checkbox" name="visibility" id="visibility" value="{{old('visibility')}}">
-        <small id="helpVisibility" class="text-muted">Please Check the Visibility</small>
+        <div class="mb-3 d-flex flex-column">
+            <label for="visibility" class="form-label">Is the property available ?</label>
+            <div>
+                <input type="checkbox" name="visibility" id="visibility" value="{{old('visibility')}}">
+                <small id="helpVisibility" class="text-muted">Please Check if available</small>
+            </div>
+        </div>
         <!-- /.Visibility -->
 
 

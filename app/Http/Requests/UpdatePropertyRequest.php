@@ -26,7 +26,7 @@ class UpdatePropertyRequest extends FormRequest
     {
         return [
             'title' => ['required', Rule::unique('properties')->ignore($this->property), 'min:5', 'max:100'],
-            'price' => 'nullable',
+            'price' => 'nullable|numeric',
             'rooms_num' => 'nullable|numeric',
             'beds_num' => 'nullable|numeric',
             'baths_num' => 'nullable|numeric',

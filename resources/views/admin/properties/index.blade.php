@@ -23,10 +23,10 @@
                 <th>Title</th>
                 <th>Slug</th>
                 <th>Price</th>
-                <th>Rooms_num</th>
-                <th>Beds_num</th>
-                <th>Baths_num</th>
-                <th>Square_meters</th>
+                <th>Rooms</th>
+                <th>Beds</th>
+                <th>Baths</th>
+                <th>Square meters</th>
                 <th>Street</th>
                 <th>City</th>
                 <th>State</th>
@@ -35,7 +35,7 @@
                 <th>Visibility</th>
                 <th>Longitude</th>
                 <th>Latitude</th>
-                <th>Action</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody class="table-group-divider">
