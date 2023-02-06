@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Type extends Model
 {
@@ -24,8 +24,8 @@ class Type extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function properties(): BelongsToMany
+    public function properties(): HasMany
     {
-        return $this->belongsToMany(Property::class);
+        return $this->hasMany(Property::class);
     }
 }
