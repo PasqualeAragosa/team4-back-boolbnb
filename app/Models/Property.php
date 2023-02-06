@@ -34,10 +34,20 @@ class Property extends Model
     /**
      * The types that belong to the Property
      *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function types(): BelongsTo
+    {
+        return $this->belongsTo(Type::class);
+    }
+
+    /**
+     * The amenities that belong to the Property
+     * 
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function types(): BelongsToMany
+    public function amenities(): BelongsToMany
     {
-        return $this->belongsToMany(Type::class);
+        return $this->belongsToMany(Amenity::class);
     }
 }
