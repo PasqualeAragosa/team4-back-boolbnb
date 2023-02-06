@@ -19,7 +19,7 @@ class PropertyController extends Controller
     public function index()
     {
 
-        $properties = Auth::user()->properties()->paginate(2);
+        $properties = Auth::user()->properties()->paginate(8);
 
 
 
