@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdatePropertyRequest;
 use App\Models\Property;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class PropertyController extends Controller
 {
@@ -17,7 +18,10 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        $properties = Property::orderByDesc('id')->paginate(8);
+
+        $properties = Auth::user()->properties()->paginate(2);
+
+
 
         return view('admin.properties.index', compact('properties'));
     }
@@ -50,6 +54,9 @@ class PropertyController extends Controller
         // generate property slug
         $property_slug = Property::generateSlug($val_data['title']);
         $val_data['slug'] = $property_slug;
+
+        // assegnazione del post corrente autenticato user
+        $val_data['user_id'] = Auth::id();
 
         // create property
         $property = Property::create($val_data);
@@ -110,7 +117,6 @@ class PropertyController extends Controller
         $property->update($val_data);
 
         return to_route('admin.properties.index')->with('message', "Property id: $property->id updated successfully");
-
     }
 
     /**
