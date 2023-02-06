@@ -97,6 +97,7 @@ class PropertyController extends Controller
     public function update(UpdatePropertyRequest $request, Property $property)
     {
         $val_data = $request->validated();
+        $visibility = $request->boolean('visibility');
 
         // check if the request has a image field
         if ($request->hasFile('image')) {
@@ -112,6 +113,12 @@ class PropertyController extends Controller
         // update property slug
         $property_slug = Property::generateSlug($val_data['title']);
         $val_data['slug'] = $property_slug;
+
+        if ($visibility == 1) {
+            $property->update(['visibility' => true]);
+        } else {
+            $property->update(['visibility' => false]);
+        }
 
         // update resource
         $property->update($val_data);

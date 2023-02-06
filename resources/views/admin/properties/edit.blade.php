@@ -140,7 +140,7 @@
 
         <div class="mb-3">
             <label for="visibility" class="form-label">Visibility</label>
-            <input type="checkbox" name="visibility" id="visibility" class="@error('visibility') is-invalid @enderror" placeholder="" aria-describedby="titleHlper" value="{{$property->visibility}}" {{$property->visibility ? 'checked' : ''}}>
+            <input type="checkbox" name="visibility" id="visibility" class="@error('visibility') is-invalid @enderror" placeholder="" aria-describedby="titleHlper" value="1" {{$property->visibility == true ? 'checked' : ''}}>
             <small id="titleHlper" class="text-muted">Add the property visibility here</small>
         </div>
 
