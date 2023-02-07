@@ -30,7 +30,6 @@
             @foreach($properties as $property)
             <tr class="table-primary">
                 <td scope="row">{{$property->title}}</td>
-                <td>{{$property->price}}</td>
                 <td> @if($property->image)
                     <img class="img-fluid" width="180" src="{{asset('storage/' . $property->image)}}" alt="">
                     @else
