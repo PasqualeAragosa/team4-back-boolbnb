@@ -19,8 +19,8 @@ class PropertyController extends Controller
     public function index()
     {
 
-        $properties = Auth::user()->properties()->paginate(8);
-
+        $user = Auth::id();
+        $properties = Property::orderByDesc('id')->where('user_id', $user)->paginate(8);
 
 
         return view('admin.properties.index', compact('properties'));
@@ -67,7 +67,7 @@ class PropertyController extends Controller
         }
 
         // create property
-        $property = Property::create($val_data);
+        Property::create($val_data);
 
         // redirect
         return to_route('admin.properties.index')->with('message', 'Property added successfully');
@@ -81,6 +81,9 @@ class PropertyController extends Controller
      */
     public function show(Property $property)
     {
+        if (Auth::id() != $property->user_id) {
+            abort(403);
+        }
         return view('admin.properties.show', compact('property'));
     }
 
@@ -92,6 +95,9 @@ class PropertyController extends Controller
      */
     public function edit(Property $property)
     {
+        if (Auth::id() != $property->user_id) {
+            abort(403);
+        }
         return view('admin.properties.edit', compact('property'));
     }
 
