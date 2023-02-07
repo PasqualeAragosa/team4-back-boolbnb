@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreign('property_id')->references('id')->on('properties')->cascadeOnDelete();
 
             $table->unsignedBigInteger('sponsorship_id');
-            $table->foreign('sponsorship_id')->references('id')->on('sponshorships')->cascadeOnDelete();
+            $table->foreign('sponsorship_id')->references('id')->on('sponsorships')->cascadeOnDelete();
 
             $table->primary(['property_id', 'sponsorship_id']);
         });
