@@ -138,10 +138,12 @@
         </div>
         @enderror
 
-        <div class="mb-3">
+        <div class="mb-3 d-flex flex-column">
             <label for="visibility" class="form-label">Visibility</label>
-            <input type="checkbox" name="visibility" id="visibility" class="@error('visibility') is-invalid @enderror" placeholder="" aria-describedby="titleHlper" value="1" {{$property->visibility == true ? 'checked' : ''}}>
-            <small id="titleHlper" class="text-muted">Add the property visibility here</small>
+            <div>
+                <input type="checkbox" name="visibility" id="visibility" class="@error('visibility') is-invalid @enderror" placeholder="" aria-describedby="titleHlper" value="1" {{$property->visibility == true ? 'checked' : ''}}>
+                <small id="titleHlper" class="text-muted">Add the property visibility here</small>
+            </div>
         </div>
 
         <div class="mb-3">
