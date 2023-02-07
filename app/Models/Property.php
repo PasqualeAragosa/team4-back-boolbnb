@@ -50,4 +50,14 @@ class Property extends Model
     {
         return $this->belongsToMany(Amenity::class);
     }
+
+    /**
+     * The sponsorships that belong to the Property
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function sponsorships(): BelongsToMany
+    {
+        return $this->belongsToMany(Sponsorship::class);
+    }
 }
