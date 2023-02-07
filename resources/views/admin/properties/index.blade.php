@@ -19,53 +19,30 @@
     align-middle">
         <thead class="table-light">
             <tr>
-                <th>ID</th>
                 <th>Title</th>
-                <th>Slug</th>
-                <th>Price</th>
-                <th>Rooms</th>
-                <th>Beds</th>
-                <th>Baths</th>
-                <th>Square meters</th>
-                <th>Street</th>
-                <th>City</th>
-                <th>State</th>
                 <th>Image</th>
-                <th>Description</th>
+                <th>Address</th>
                 <th>Visibility</th>
-                <th>Longitude</th>
-                <th>Latitude</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody class="table-group-divider">
             @foreach($properties as $property)
             <tr class="table-primary">
-                <td>{{$property->id}}</td>
                 <td scope="row">{{$property->title}}</td>
-                <td>{{$property->slug}}</td>
                 <td>{{$property->price}}</td>
-                <td>{{$property->rooms_num}}</td>
-                <td>{{$property->beds_num}}</td>
-                <td>{{$property->baths_num}}</td>
-                <td>{{$property->square_meters}}</td>
-                <td>{{$property->street}}</td>
-                <td>{{$property->city}}</td>
-                <td>{{$property->state}}</td>
                 <td> @if($property->image)
                     <img class="img-fluid" width="180" src="{{asset('storage/' . $property->image)}}" alt="">
                     @else
                     <div class="placeholders p-5 bg-secondary" width="140">Placeholders</div>
                     @endif
                 </td>
-                <td>{{$property->description}}</td>
+                <td>{{$property->address}}</td>
                 @if($property->visibility)
                 <td>available</td>
                 @else
                 <td>not available</td>
                 @endif
-                <td>{{$property->longitude}}</td>
-                <td>{{$property->latitude}}</td>
                 <td class="Actions">
 
                     <!-- Show -->

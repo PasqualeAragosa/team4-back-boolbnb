@@ -20,6 +20,7 @@ class PropertySeeder extends Seeder
 
         for ($i = 0; $i < 10; $i++) {
             $property = new Property();
+            $property->user_id = 1;
             $property->title = $faker->sentence(3);
             $property->slug = Str::slug($property->title, '-');
             $property->price = $faker->randomFloat(2, 60, 9999);
@@ -27,9 +28,7 @@ class PropertySeeder extends Seeder
             $property->beds_num = $faker->numberBetween(1, 20);
             $property->baths_num = $faker->numberBetween(1, 5);
             $property->square_meters = $faker->numberBetween(15, 300);
-            $property->street = $faker->streetAddress();
-            $property->city = $faker->city();
-            $property->state = $faker->state();
+            $property->address = $faker->address();
             $property->image = 'placeholders/' . 'casapigna.png';
             $property->description = $faker->text(100);
             $property->visibility = $faker->boolean();
