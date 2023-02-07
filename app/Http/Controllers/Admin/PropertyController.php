@@ -45,6 +45,8 @@ class PropertyController extends Controller
     public function store(StorePropertyRequest $request)
     {
         $val_data = $request->validated();
+        $visibility = $request->boolean('visibility');
+
 
         if ($request->hasFile('image')) {
             $image = Storage::put('uploads', $val_data['image']);
@@ -57,6 +59,12 @@ class PropertyController extends Controller
 
         // assegnazione del post corrente autenticato user
         $val_data['user_id'] = Auth::id();
+
+        if ($visibility == 1) {
+            $val_data['visibility'] = true;
+        } else {
+            $val_data['visibility'] = false;
+        }
 
         // create property
         $property = Property::create($val_data);

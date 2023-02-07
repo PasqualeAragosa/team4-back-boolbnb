@@ -103,7 +103,7 @@
         <div class="mb-3 d-flex flex-column">
             <label for="visibility" class="form-label">Is the property available ?</label>
             <div>
-                <input type="checkbox" name="visibility" id="visibility" value="{{old('visibility')}}">
+                <input type="checkbox" name="visibility" id="visibility" value="1">
                 <small id="helpVisibility" class="text-muted">Please Check if available</small>
             </div>
         </div>

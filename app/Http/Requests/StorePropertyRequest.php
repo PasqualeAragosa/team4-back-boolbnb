@@ -35,6 +35,7 @@ class StorePropertyRequest extends FormRequest
             'city' => 'nullable|min:2|max:60',
             'state' => 'nullable|min:2|max:60',
             'image' => 'nullable|image|max:300',
+            'visibility' => 'boolean',
             'description' => 'nullable'
         ];
     }
