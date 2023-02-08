@@ -63,12 +63,22 @@ class Property extends Model
     }
 
     /**
-     * The properties that hasMany the view
+     * Get all the Views for the Property
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function views(): HasMany
     {
         return $this->hasMany(View::class);
+    }
+
+    /**
+     * Get all the Messages for the Property
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
     }
 }

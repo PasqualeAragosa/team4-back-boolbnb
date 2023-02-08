@@ -6,13 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-
-class View extends Model
+class Message extends Model
 {
     use HasFactory;
 
     /**
-     * The Views that belongsto the Property
+     * The Messages that belongsto the Property
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
