@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Properties</title>
+    <title>BoolBnb | Dashboard</title>
 
     <!-- searchbox cdn -->
     <link
@@ -33,19 +33,19 @@
 
 <body>
     <div id="app">
-        <header class="navbar navbar-dark bg-dark sticky-top flex-md-nowrap p-0 shadow">
-            <div class="container-fluid">
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Property</a>
-                <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+
+       <header>
+        <nav class="navbar bg-white sticky-top flex-nowrap p-0 shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#"> <img class="img-fluid" style="width:30%" src="/images/logo.png" alt=""></a>
+                
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             {{ Auth::user()->name }}
                         </a>
 
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu border-0 shadow">
                             <li>
                                 <a class="dropdown-item" href="{{ url('admin') }}">{{__('Dashboard')}}</a>
                             </li>
@@ -64,14 +64,19 @@
                         </ul>
                     </li>
                 </ul>
+
+                <button class="navbar-toggler d-md-none collapsed mx-4" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>   
+                </button>
             </div>
-        </header>
+        </nav>
+       </header>
 
         <div class="container-fluid">
             <div class="row">
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
                     <div class="position-sticky pt-3 sidebar-sticky">
-                        <ul class="nav flex-column">
+                        <ul class="nav flex-md-column">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{url('admin')}}">
                                     <span data-feather="home" class="align-text-bottom"></span>
