@@ -21,6 +21,9 @@ return new class extends Migration
             $table->foreign('sponsorship_id')->references('id')->on('sponsorships')->cascadeOnDelete();
 
             $table->primary(['property_id', 'sponsorship_id']);
+
+            $table->date('start_date');
+            $table->date('end_date');
         });
     }
 

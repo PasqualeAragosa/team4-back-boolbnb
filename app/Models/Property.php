@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Property extends Model
 {
-    protected $fillable = ['title', 'slug', 'price', 'description', 'rooms_num', 'beds_num', 'baths_num', 'square_meters', 'street', 'city',  'state', 'image', 'visibility', 'longitude', 'latitude', 'user_id'];
+    protected $fillable = ['title', 'slug', 'price', 'description', 'rooms_num', 'beds_num', 'baths_num', 'square_meters', 'address', 'image', 'visibility', 'longitude', 'latitude', 'user_id'];
     use HasFactory;
 
     public static function generateSlug($title)
@@ -59,5 +60,25 @@ class Property extends Model
     public function sponsorships(): BelongsToMany
     {
         return $this->belongsToMany(Sponsorship::class);
+    }
+
+    /**
+     * Get all the Views for the Property
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function views(): HasMany
+    {
+        return $this->hasMany(View::class);
+    }
+
+    /**
+     * Get all the Messages for the Property
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
     }
 }

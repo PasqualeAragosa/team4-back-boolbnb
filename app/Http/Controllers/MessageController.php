@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Amenity;
-use App\Http\Requests\StoreAmenityRequest;
-use App\Http\Requests\UpdateAmenityRequest;
+use App\Http\Requests\StoreMessageRequest;
+use App\Http\Requests\UpdateMessageRequest;
+use App\Models\Message;
 
-class AmenityController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class AmenityController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAmenityRequest  $request
+     * @param  \App\Http\Requests\StoreMessageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAmenityRequest $request)
+    public function store(StoreMessageRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class AmenityController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Amenity  $amenity
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show(Amenity $amenity)
+    public function show(Message $message)
     {
         //
     }
@@ -53,10 +53,10 @@ class AmenityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Amenity  $amenity
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function edit(Amenity $amenity)
+    public function edit(Message $message)
     {
         //
     }
@@ -64,11 +64,11 @@ class AmenityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAmenityRequest  $request
-     * @param  \App\Models\Amenity  $amenity
+     * @param  \App\Http\Requests\UpdateMessageRequest  $request
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAmenityRequest $request, Amenity $amenity)
+    public function update(UpdateMessageRequest $request, Message $message)
     {
         //
     }
@@ -76,10 +76,10 @@ class AmenityController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Amenity  $amenity
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Amenity $amenity)
+    public function destroy(Message $message)
     {
         //
     }
