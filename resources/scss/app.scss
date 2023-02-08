@@ -1,11 +1,38 @@
 @import "~bootstrap/scss/bootstrap";
 
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #161616;
+}
+
 input:invalid::after,
 textarea:invalid {
     background-color: ivory;
     border: none;
     outline: 2px solid red;
     border-radius: 5px;
+}
+
+.navbar {
+    box-shadow: 0 0.125rem 0.125rem rgb(255 141 52) !important;
+
+    .nav-link {
+        color: #161616 !important;
+
+        &:hover {
+            color: #ff8d34 !important;
+        }
+    }
+}
+
+.admin-form {
+    .card-header {
+        background-color: white !important;
+        font-family: 'Marck Script', cursive;
+        color: #ff8d34 !important;
+        font-size: 32px;
+        border-bottom: none !important;
+    }
 }
 
 div.tt-search-box-input-container {
