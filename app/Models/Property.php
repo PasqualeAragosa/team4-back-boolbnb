@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Property extends Model
 {
@@ -59,5 +60,15 @@ class Property extends Model
     public function sponsorships(): BelongsToMany
     {
         return $this->belongsToMany(Sponsorship::class);
+    }
+
+    /**
+     * The properties that hasMany the view
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function views(): HasMany
+    {
+        return $this->hasMany(View::class);
     }
 }

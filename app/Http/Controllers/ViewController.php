@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sponsorship;
-use App\Http\Requests\StoreSponsorshipRequest;
-use App\Http\Requests\UpdateSponsorshipRequest;
+use App\Http\Requests\StoreViewRequest;
+use App\Http\Requests\UpdateViewRequest;
+use App\Models\View;
 
-class SponsorshipController extends Controller
+class ViewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class SponsorshipController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSponsorshipRequest  $request
+     * @param  \App\Http\Requests\StoreViewRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSponsorshipRequest $request)
+    public function store(StoreViewRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class SponsorshipController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Sponsorship  $sponsorship
+     * @param  \App\Models\View  $view
      * @return \Illuminate\Http\Response
      */
-    public function show(Sponsorship $sponsorship)
+    public function show(View $view)
     {
         //
     }
@@ -53,10 +53,10 @@ class SponsorshipController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Sponsorship  $sponsorship
+     * @param  \App\Models\View  $view
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sponsorship $sponsorship)
+    public function edit(View $view)
     {
         //
     }
@@ -64,11 +64,11 @@ class SponsorshipController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSponsorshipRequest  $request
-     * @param  \App\Models\Sponsorship  $sponsorship
+     * @param  \App\Http\Requests\UpdateViewRequest  $request
+     * @param  \App\Models\View  $view
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSponsorshipRequest $request, Sponsorship $sponsorship)
+    public function update(UpdateViewRequest $request, View $view)
     {
         //
     }
@@ -76,10 +76,10 @@ class SponsorshipController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Sponsorship  $sponsorship
+     * @param  \App\Models\View  $view
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sponsorship $sponsorship)
+    public function destroy(View $view)
     {
         //
     }
