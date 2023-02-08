@@ -20,8 +20,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
@@ -30,43 +29,43 @@
 <body>
     <div id="app">
 
-       <header>
-        <nav class="navbar bg-white sticky-top flex-nowrap p-0 shadow-sm">
-            <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="#"> <img class="img-fluid" style="width:30%" src="/images/logo.png" alt=""></a>
-                
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            {{ Auth::user()->name }}
-                        </a>
+        <header>
+            <nav class="navbar bg-white sticky-top flex-nowrap p-0 shadow-sm">
+                <div class="container">
+                    <a class="navbar-brand d-flex align-items-center" href="#"> <img class="img-fluid" style="width:30%" src="/images/logo.png" alt=""></a>
 
-                        <ul class="dropdown-menu border-0 shadow">
-                            <li>
-                                <a class="dropdown-item" href="{{ url('admin') }}">{{__('Dashboard')}}</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <ul class="dropdown-menu border-0 shadow">
+                                <li>
+                                    <a class="dropdown-item" href="{{ url('admin') }}">{{__('Dashboard')}}</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+                                        {{ __('Logout') }}
+                                    </a>
 
-                            </li>
-                            <li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                                </li>
+                                <li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
 
-                <button class="navbar-toggler d-md-none collapsed mx-4" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa-solid fa-bars"></i>   
-                </button>
-            </div>
-        </nav>
-       </header>
+                    <button class="navbar-toggler d-md-none collapsed mx-4" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </header>
 
         <div class="container-fluid">
             <div class="row">
