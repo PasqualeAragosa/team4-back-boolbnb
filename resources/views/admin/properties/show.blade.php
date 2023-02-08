@@ -4,7 +4,7 @@
 
 <!-- if there's an image, show it; otherwise, show a placeholder -->
 @if($property->image)
-<img class="img-fluid" src="{{asset('storage/' . $property->image)}}" alt="">
+<img class="img-fluid w-50" src="{{asset('storage/' . $property->image)}}" alt="">
 @else
 <div class="placeholder p-5 bg-secondary">Placeholder</div>
 @endif
