@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Property;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 
 class MessageController extends Controller
@@ -20,26 +21,21 @@ class MessageController extends Controller
      */
     public function index()
     {
-
-        $user = Auth::id();
-        $properties = Property::where('user_id', $user)->get();
-        // dd($properties);
-        $messages = Message::all();
-        // dd($messages);
-
-        // $user_messages = {};
-
-        // foreach ($properties as $property) {
-        //     $property_id = $property->id;
-        //     foreach ($messages as $message) {
-        //         if ($message->property_id === $property_id) {
-        //             $user_messages->push($message);
-        //         }
-        //     }
-        // }
+        $properties = Property::where('user_id', Auth::id())->get();
+        $prop_ut = [];
 
 
-        return view('admin.messages.index', compact('messages'));
+
+        foreach ($properties as $property) {
+            array_push($prop_ut, $property['id']);
+        }
+        //dd($prop_ut);
+
+        $messages = Message::whereIn('property_id', $prop_ut)->get();
+        //dd($messages);
+        //dd($properties);
+
+        return view('admin.messages.index', compact('messages', 'properties'));
     }
 
     /**
