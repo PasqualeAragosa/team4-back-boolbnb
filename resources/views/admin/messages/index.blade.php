@@ -5,7 +5,16 @@
 @section('content')
 
 
+<ul>
+    @forelse($messages as $message)
+    <li>
+        {{$message->content}}
+    </li>
+    @empty
+    <li>Non funziona</li>
+    @endforelse
+</ul>
 
-{{ $properties->links('vendor.pagination.bootstrap-5') }}
+
 
 @endsection

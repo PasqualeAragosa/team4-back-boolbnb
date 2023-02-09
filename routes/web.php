@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\SponsorshipController;
 use App\Models\Property;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
         'properties' => 'property:slug'
     ]);
     Route::resource('sponsorships', SponsorshipController::class)->except(['create', 'store', 'show', 'edit', 'update', 'destroy']);
+    Route::resource('messages', MessageController::class)->except(['create', 'store', 'edit', 'update']);
 });
 
 require __DIR__ . '/auth.php';

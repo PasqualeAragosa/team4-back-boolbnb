@@ -92,6 +92,13 @@
                                     Sponsorship
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{Route::currentRouteName() === 'admin.messages.index' ? 'active': ''}}" href="{{route('admin.messages.index')}}">
+                                    <span data-feather="file" class="align-text-bottom"></span>
+                                    <i class="fas fa-pencil fa-sm fa-fw"></i>
+                                    Messages
+                                </a>
+                            </li>
 
                         </ul>
                     </div>
