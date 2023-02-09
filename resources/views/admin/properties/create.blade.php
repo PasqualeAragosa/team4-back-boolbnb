@@ -58,6 +58,22 @@
         </div>
         <!-- /.Square_meters -->
 
+        <!-- Amenity -->
+        <div class="my-5">
+            <label for="amenity" class="form-label">Please select the Amenity</label>
+            <div class="d-flex flex-wrap">
+                @forelse ($amenities as $amenity)
+                <div class="p-2 d-flex align-items-center" style="width: 200px">
+                    <input type="checkbox" name="amenity" id="amenity" value="{{old('amenity')}}">
+                    <p class="ms-2 m-0">{{ $amenity->name }}</p>
+                </div>
+                @empty
+                <h4>No amenities added yet in the database</h4>
+                @endforelse
+            </div>
+        </div>
+        <!-- /.Amenity -->
+
         <!-- Address -->
         <div class="mb-3">
             <label for="address" class="form-label">Address</label>

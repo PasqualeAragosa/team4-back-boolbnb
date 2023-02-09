@@ -9,6 +9,7 @@ use App\Models\Property;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use App\Models\Amenity;
 
 class PropertyController extends Controller
 {
@@ -34,7 +35,9 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        return view('admin.properties.create');
+        $amenities = Amenity::all();
+
+        return view('admin.properties.create', compact('amenities'));
     }
 
     /**
@@ -125,13 +128,13 @@ class PropertyController extends Controller
         $val_data = $request->validated();
         $visibility = $request->boolean('visibility');
 
-        if(isset($val_data['address'])) {
+        if (isset($val_data['address'])) {
 
             $response = Http::withoutVerifying()->get('https://api.tomtom.com/search/2/geocode/' . $val_data['address'] . ' ' . '.json', [
                 'key' => config('services.tomtom.key'),
                 'limit' => '1'
             ]);
-    
+
             $coordinates = $response->json();
             // dd($coordinates);
             $val_data['latitude'] = $coordinates['results'][0]['position']['lat'];
