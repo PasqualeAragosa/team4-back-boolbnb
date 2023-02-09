@@ -25,8 +25,8 @@
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md bg-white shadow-sm">
-            <div class="container flex-nowrap">
+        <nav class="navbar navbar-expand-md bg-white shadow-sm px-4">
+            <div class="container-fluid flex-nowrap">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <img class="img-fluid" style="width:30%" src="/images/logo.png" alt="">
                 </a>

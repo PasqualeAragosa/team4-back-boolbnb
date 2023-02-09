@@ -29,8 +29,8 @@
 <body>
     <div id="app">
         <header>
-            <nav class="navbar bg-white sticky-top flex-nowrap p-0 shadow-sm">
-                <div class="container">
+            <nav class="navbar bg-white sticky-top flex-nowrap p-0 shadow-sm pe-4">
+                <div class="container-fluid">
                     <a class="navbar-brand d-flex align-items-center" href="#"> <img class="img-fluid" style="width:30%" src="/images/logo.png" alt=""></a>
 
                     <ul class="navbar-nav ml-auto">
@@ -73,23 +73,20 @@
                         <ul class="nav flex-md-column">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{url('admin')}}">
-                                    <span data-feather="home" class="align-text-bottom"></span>
                                     <i class="fas fa-tachometer-alt    "></i>
-                                    Dashboard
+                                    <span data-feather="home" class="align-text-bottom"> Dashboard</span>              
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{Route::currentRouteName() === 'admin.projects.index' ? 'active': ''}}" href="{{route('admin.properties.index')}}">
-                                    <span data-feather="file" class="align-text-bottom"></span>
                                     <i class="fas fa-pencil fa-sm fa-fw"></i>
-                                    Properties
+                                    <span data-feather="file" class="align-text-bottom"> Properties</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{Route::currentRouteName() === 'admin.sponsorships.index' ? 'active': ''}}" href="{{route('admin.sponsorships.index')}}">
-                                    <span data-feather="file" class="align-text-bottom"></span>
                                     <i class="fas fa-pencil fa-sm fa-fw"></i>
-                                    Sponsorship
+                                    <span data-feather="file" class="align-text-bottom"> Sponsorship</span>
                                 </a>
                             </li>
 

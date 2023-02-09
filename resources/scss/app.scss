@@ -5,6 +5,23 @@ body {
     color: #161616;
 }
 
+h1 {
+    font-family: 'Marck Script', cursive;
+    font-size: 42px;
+}
+
+.bck-orange {
+    background-color: #ff8d34;
+
+    &:hover {
+        background-color: #ff8c34c9;
+    }
+}
+
+.text-orange {
+    color: #ff8d34;
+}
+
 /* client-side validation class */
 input.error {
     background-color: ivory;
@@ -31,7 +48,7 @@ input.error {
 
     .dropdown-menu {
         position: absolute !important;
-        left: -50% !important;
+        left: -200% !important;
 
         .dropdown-item:hover {
             color: #ff8d34 !important;
@@ -64,5 +81,30 @@ input.error {
 #sidebarMenu {
     .nav-link {
         color: #ff8d34 !important;
+
+        span {
+            color: #161616;
+
+            &:hover {
+                color: #ff8d34;
+                border-bottom: 1px solid #ff8d34 !important;
+            }
+        }
     }
+}
+
+.pagination {
+
+    .page-item {
+        .page-link {
+            color: #ff8d34 !important;
+        }
+    }
+
+    .active>.page-link {
+        background-color: #ff8d34 !important;
+        border-color: #ff8d34 !important;
+        color: #ffffff !important;
+    }
+
 }
