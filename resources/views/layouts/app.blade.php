@@ -75,6 +75,8 @@
             @yield('content')
         </main>
     </div>
+
+    @include('partials.validation')
 </body>
 
 </html>

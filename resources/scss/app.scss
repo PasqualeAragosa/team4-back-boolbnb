@@ -1,12 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     color: #161616;
 }
 
-input:invalid::after,
-textarea:invalid {
+/* client-side validation class */
+input.error {
     background-color: ivory;
     border: none;
     outline: 2px solid red;
@@ -43,7 +43,7 @@ textarea:invalid {
 .admin-form {
     .card-header {
         background-color: white !important;
-        font-family: 'Marck Script', cursive;
+        font-family: "Marck Script", cursive;
         color: #ff8d34 !important;
         font-size: 32px;
         border-bottom: none !important;
@@ -65,29 +65,4 @@ textarea:invalid {
     .nav-link {
         color: #ff8d34 !important;
     }
-}
-
-div.tt-search-box-input-container {
-    border: 0;
-    padding: 0;
-}
-
-div.tt-search-box-input-container input {
-    display: block;
-    width: 100%;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    appearance: none;
-    border-radius: 0.375rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-div.tt-search-box-input-container svg {
-    display: none;
 }

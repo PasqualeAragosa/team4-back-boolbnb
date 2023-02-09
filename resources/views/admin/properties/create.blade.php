@@ -104,40 +104,8 @@
         </div>
     </form>
 
+    @include('partials.validation')
 
-    <!-- da inserire in create -->
-    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.23.0/services/services-web.min.js"></script>
-    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.23.0/maps/maps-web.min.js"></script>
-    <!-- searchbox plugins -->
-    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.12/SearchBox-web.js"></script>
-    <script>
-    const options = {
-        searchOptions: {
-        key: "dcEQtI4NS1isWSGpD7hptIGNCBFbNbcC",
-        language: "en-GB",
-        limit: 5,
-        },
-        autocompleteOptions: {
-        key: "dcEQtI4NS1isWSGpD7hptIGNCBFbNbcC",
-        language: "en-GB",
-        },
-    };
-
-    /* create our new SearchBox instance */
-    /* const ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
-    const searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-    /* select address container */
-    //const inputAddress = document.querySelector(".address");
-
-    //const ttSearchBoxInput = document.getElementsByClassName("tt-search-box-input");
-    /* 
-    ttSearchBoxInput[0].setAttribute("name", "address");
-    ttSearchBoxInput[0].setAttribute("id", "address"); */
-
-    //console.log(ttSearchBoxInput);
-    /* insert tt searchbox */
-    //inputAddress.insertAdjacentElement("beforeend", searchBoxHTML);
-    </script>
 </div>
 <!-- /.container -->
 @endsection
