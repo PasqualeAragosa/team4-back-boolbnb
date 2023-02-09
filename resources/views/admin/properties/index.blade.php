@@ -98,10 +98,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Optional: Place to the bottom of scripts -->
-                    <script>
-                        const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
-                    </script>
                     <!-- /.Delete -->
                 </td>
                 @endforeach

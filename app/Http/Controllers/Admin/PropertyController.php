@@ -8,6 +8,7 @@ use App\Http\Requests\UpdatePropertyRequest;
 use App\Models\Property;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class PropertyController extends Controller
 {
@@ -39,7 +40,7 @@ class PropertyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePropertyRequest  $request
+     * @param  \App\Http\Requests\StorePropertyRequest  
      * @return \Illuminate\Http\Response
      */
     public function store(StorePropertyRequest $request)
@@ -47,6 +48,17 @@ class PropertyController extends Controller
         $val_data = $request->validated();
         $visibility = $request->boolean('visibility');
 
+        // TOM TOM
+        $response = Http::withoutVerifying()->get('https://api.tomtom.com/search/2/geocode/' . $val_data['address'] . ' ' . '.json', [
+            'key' => config('services.tomtom.key'),
+            'limit' => '1'
+        ]);
+
+        $coordinates = $response->json();
+        //dd($coordinates);
+        $val_data['latitude'] = $coordinates['results'][0]['position']['lat'];
+        $val_data['longitude'] = $coordinates['results'][0]['position']['lon'];
+        // dd($response);
 
         if ($request->hasFile('image')) {
             $image = Storage::put('uploads', $val_data['image']);
@@ -112,6 +124,20 @@ class PropertyController extends Controller
     {
         $val_data = $request->validated();
         $visibility = $request->boolean('visibility');
+
+        if(isset($val_data['address'])) {
+
+            $response = Http::withoutVerifying()->get('https://api.tomtom.com/search/2/geocode/' . $val_data['address'] . ' ' . '.json', [
+                'key' => config('services.tomtom.key'),
+                'limit' => '1'
+            ]);
+    
+            $coordinates = $response->json();
+            // dd($coordinates);
+            $val_data['latitude'] = $coordinates['results'][0]['position']['lat'];
+            $val_data['longitude'] = $coordinates['results'][0]['position']['lon'];
+            // dd($response);
+        }
 
         // check if the request has a image field
         if ($request->hasFile('image')) {
