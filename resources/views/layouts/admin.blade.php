@@ -28,7 +28,6 @@
 
 <body>
     <div id="app">
-
         <header>
             <nav class="navbar bg-white sticky-top flex-nowrap p-0 shadow-sm">
                 <div class="container">

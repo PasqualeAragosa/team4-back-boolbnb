@@ -7,7 +7,7 @@
             <div class="card  p-4 shadow border-0">
                 <div class="card-header">{{ __('Confirm Password') }}</div>
 
-                <div class="card-body pt-5">
+                <div class="card-body pt-4">
                     {{ __('Please confirm your password before continuing.') }}
 
                     <form method="POST" action="{{ route('password.confirm') }}">
