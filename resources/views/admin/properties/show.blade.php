@@ -16,6 +16,7 @@
 <p>Rooms: {{$property->rooms_num}}</p>
 <p>Beds: {{$property->beds_num}}</p>
 <p>Square Meters: {{$property->square_meters}}</p>
+<p>Amenities: {{$property->amenity}}</p>
 <p>Address: {{$property->address}}</p>
 @if($property->visibility)
 <p>Visibility: available</p>

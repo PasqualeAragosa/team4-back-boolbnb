@@ -6,6 +6,9 @@ use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
 use App\Models\Message;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Property;
+use App\Models\User;
 
 
 class MessageController extends Controller
@@ -17,7 +20,26 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+
+        $user = Auth::id();
+        $properties = Property::where('user_id', $user)->get();
+        // dd($properties);
+        $messages = Message::all();
+        // dd($messages);
+
+        // $user_messages = {};
+
+        // foreach ($properties as $property) {
+        //     $property_id = $property->id;
+        //     foreach ($messages as $message) {
+        //         if ($message->property_id === $property_id) {
+        //             $user_messages->push($message);
+        //         }
+        //     }
+        // }
+
+
+        return view('admin.messages.index', compact('messages'));
     }
 
     /**
@@ -83,6 +105,8 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        //
+        $message->delete();
+
+        return to_route('admin.messages.index')->with('message', "$message->id message deleted successfully");
     }
 }

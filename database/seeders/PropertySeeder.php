@@ -21,6 +21,7 @@ class PropertySeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $property = new Property();
             $property->user_id = 1;
+            $property->type_id = 1;
             $property->title = $faker->sentence(3);
             $property->slug = Str::slug($property->title, '-');
             $property->price = $faker->randomFloat(2, 60, 9999);
