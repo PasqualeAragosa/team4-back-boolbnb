@@ -13,11 +13,13 @@
     @foreach($properties as $property)
     <div class="col">
         <div class="card shadow border-0" style="height:100%">
-            @if($property->image)
-            <img class="card-img-top img-fluid"  src="{{asset('storage/' . $property->image)}}" alt="">
-            @else
-            <img class="card-img-top img-fluid" src="/images/placeholder.png" alt="">
-            @endif
+            <div class="image overflow-hidden">
+                @if($property->image)
+                <img class="card-img-top img-fluid photo-zoom"  src="{{asset('storage/' . $property->image)}}" alt="">
+                @else
+                <img class="card-img-top img-fluid" src="/images/placeholder.png" alt="">
+                @endif
+            </div>
             <div class="card-body  p-4">
                 <h5 class="card-title">{{$property->title}}</h5>
                 <p class="card-text">{{$property->address}}</p>
