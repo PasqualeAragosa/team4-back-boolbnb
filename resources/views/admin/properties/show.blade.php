@@ -16,7 +16,22 @@
 <p>Rooms: {{$property->rooms_num}}</p>
 <p>Beds: {{$property->beds_num}}</p>
 <p>Square Meters: {{$property->square_meters}}</p>
-<p>Amenities: {{$property->amenity}}</p>
+
+<div class="amenities">
+    <span>Amenities:</span>
+    @if(count($property->amenities) > 0 )
+
+
+    @foreach ($property->amenities as $amenity)
+    <span>{{$amenity->name}}</span>
+    @endforeach
+
+    @else
+    <span>Not Amenities associated to the property</span>
+    @endif
+
+</div>
+
 <p>Address: {{$property->address}}</p>
 @if($property->visibility)
 <p>Visibility: available</p>
