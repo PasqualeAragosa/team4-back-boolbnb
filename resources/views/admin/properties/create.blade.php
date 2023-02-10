@@ -60,11 +60,11 @@
 
         <!-- Amenity -->
         <div class="my-5">
-            <label for="amenity" class="form-label">Please select the Amenity</label>
+            <label for="amenities" class="form-label">Please select the Amenity</label>
             <div class="d-flex flex-wrap">
                 @forelse ($amenities as $amenity)
                 <div class="p-2 d-flex align-items-center" style="width: 200px">
-                    <input type="checkbox" name="amenity" id="amenity" value="{{old('amenity')}}">
+                    <input type="checkbox" name="amenities[]" id="amenities" value="{{$amenity->id}}" {{ in_array($amenity->id, old('amenities', [])) ? 'checked' : '' }}>
                     <p class="ms-2 m-0">{{ $amenity->name }}</p>
                 </div>
                 @empty

@@ -34,7 +34,8 @@ class StorePropertyRequest extends FormRequest
             'address' => 'nullable|min:2|max:60',
             'image' => 'nullable|image|max:300',
             'visibility' => 'boolean',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'amenities' => 'exists:amenities,id'
         ];
     }
 }

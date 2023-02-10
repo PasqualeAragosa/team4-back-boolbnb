@@ -104,6 +104,33 @@
         </div>
         @enderror
 
+        <!-- Amenity -->
+        <div class="my-5">
+            <label for="amenities" class="form-label">Amenity</label>
+            <div class="d-flex flex-wrap">
+                @forelse ($amenities as $amenity)
+
+                @if ($errors->any())
+                <!-- Page with errors validation -->
+                <div class="p-2 d-flex align-items-center" style="width: 200px">
+                    <input type="checkbox" name="amenities[]" id="amenities" value="{{$amenity->id}}" {{ in_array($amenity->id, old('amenities', [])) ? 'checked' : '' }}>
+                    <p class="ms-2 m-0">{{ $amenity->name }}</p>
+                </div>
+                @else
+                <!-- Page loaded for the first time: must show the pre-selected Amenities from the db -->
+                <div class="p-2 d-flex align-items-center" style="width: 200px">
+                    <input type="checkbox" name="amenities[]" id="amenities" value="{{$amenity->id}}" {{ $property->amenities->contains($amenity->id) ? 'checked' : ''}}>
+                    <p class="ms-2 m-0">{{ $amenity->name }}</p>
+                </div>
+                @endif
+                @empty
+                <h4>No amenities added yet in the database</h4>
+                @endforelse
+            </div>
+        </div>
+        <!-- /.Amenity -->
+
+
 
         <div class="mb-3">
             <label for="address" class="form-label">Address</label>
@@ -116,7 +143,7 @@
         </div>
         @enderror
 
-   
+
 
         <div class="mb-3 d-flex flex-column">
             <label for="visibility" class="form-label">Visibility</label>
