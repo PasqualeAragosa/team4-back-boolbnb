@@ -25,7 +25,6 @@
 @else
 <h5 class="text-orange">Not available</h5>
 @endif
-<p>Address: {{$property->address}}</p>
 <div class="description mb-3">
     {{$property->description}}
 </div>
