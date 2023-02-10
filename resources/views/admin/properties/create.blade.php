@@ -46,8 +46,8 @@
 
         <!-- Type -->
         <div class="mb-3">
-            <label for="type_id" class="form-label">Type</label>
-            <select class="form-select form-select-sm @error('type_id') 'is-invalid' @enderror" name="type_id" id="type_id">
+            <label for="type_id" class="form-label text-orange">Type</label>
+            <select class="form-select form-select-md @error('type_id') 'is-invalid' @enderror" name="type_id" id="type_id">
                 <option value="">No type</option>
 
                 @foreach ($types as $type)
@@ -75,7 +75,7 @@
         </div>
         <!-- /.Amenity -->
         <div class="mb-3 address">
-            <label for="address" class="form-label">Address</label>
+            <label for="address" class="form-label text-orange">Address</label>
         </div>
         <!-- /.Address -->
         <div class="mb-3">

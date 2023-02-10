@@ -89,8 +89,8 @@
 
         <!-- Type -->
         <div class="mb-3">
-            <label for="type_id" class="form-label">Types</label>
-            <select class="form-select form-select-lg @error('type_id') 'is-invalid' @enderror" name="type_id" id="type_id">
+            <label for="type_id" class="form-label text-orange">Types</label>
+            <select class="form-select form-select-md @error('type_id') 'is-invalid' @enderror" name="type_id" id="type_id">
                 <option value="">Uncategorize</option>
 
                 @forelse ($types as $type)
@@ -131,7 +131,7 @@
         </div>
         <!-- /.Amenity -->
         <div class="mb-3 address">
-            <label for="address" class="form-label">Address</label>
+            <label for="address" class="form-label text-orange">Address</label>
         </div>
         @error('address')
         <div class="alert alert-danger" role="alert">
