@@ -76,9 +76,8 @@
         <!-- /.Amenity -->
 
         <!-- Address -->
-        <div class="mb-3">
+        <div class="mb-3 address">
             <label for="address" class="form-label">Address</label>
-            <input type="text" name="address" id="address" class="form-control @error('address') is-invalid @enderror" placeholder="8888 Cummings Vista Apt. 101, Susanbury, NY 95473" aria-describedby="helpAddress" value="{{old('address')}}" required>
             &ast;
             <small id="helpAddress" class="text-muted">Please Enter The Address</small>
         </div>
@@ -124,6 +123,7 @@
 
     @include('partials.validation')
 
+    @include('partials.autocomplete')
 </div>
 <!-- /.container -->
 @endsection

@@ -121,8 +121,6 @@
 
         <div class="mb-3">
             <label for="address" class="form-label">Address</label>
-            <input type="text" name="address" id="address" class="form-control @error('address') is-invalid @enderror" placeholder="" aria-describedby="titleHlper" value="{{old('address', $property->address)}}" required>
-            &ast;
             <small id="titleHlper" class="text-muted">Update the Property Address</small>
         </div>
         @error('address')
@@ -168,6 +166,8 @@
     </form>
 
     @include('partials.validation')
+    @include('partials.autocomplete')
+
 </div>
 
 @endsection
