@@ -21,6 +21,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.3-public-preview.0/SearchBox.css"
+    />
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.1.2-public-preview.15/services/services-web.min.js"></script>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.3-public-preview.0/SearchBox-web.js"></script>
+
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
@@ -29,9 +37,9 @@
 <body>
     <div id="app">
         <header>
-            <nav class="navbar bg-white sticky-top flex-nowrap p-0 shadow-sm pe-4">
+            <nav class="navbar sticky-top flex-nowrap p-0 pe-4">
                 <div class="container-fluid">
-                    <a class="navbar-brand d-flex align-items-center" href="#"> <img class="img-fluid" style="width:30%" src="/images/logo.png" alt=""></a>
+                    <a class="navbar-brand d-flex align-items-center" href="#"> <img class="img-fluid" style="height:77px" src="/images/logo_nav.png" alt=""></a>
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
@@ -91,9 +99,8 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{Route::currentRouteName() === 'admin.messages.index' ? 'active': ''}}" href="{{route('admin.messages.index')}}">
-                                    <span data-feather="file" class="align-text-bottom"></span>
                                     <i class="fas fa-pencil fa-sm fa-fw"></i>
-                                    Messages
+                                    <span data-feather="file" class="align-text-bottom"> Messages</span>
                                 </a>
                             </li>
 

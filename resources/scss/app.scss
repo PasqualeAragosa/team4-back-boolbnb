@@ -6,7 +6,7 @@ body {
 }
 
 h1 {
-    font-family: 'Marck Script', cursive;
+    font-family: "Marck Script", cursive;
     font-size: 42px;
 }
 
@@ -32,23 +32,30 @@ input.error {
 
 .navbar {
     box-shadow: 0 0.125rem 0.125rem rgb(255 141 52) !important;
+    background-color: #ff8d34;
+    font-size: 20px;
 
     .navbar-toggler:focus {
         box-shadow: none !important;
-        color: #ff8d34 !important;
+        color: #ffffff !important;
     }
 
     .nav-link {
         color: #161616 !important;
 
         &:hover {
-            color: #ff8d34 !important;
+            color: #ffffff !important;
         }
+    }
+
+    .navbar-collapse {
+        flex-basis: 0 !important;
+        flex-grow: inherit !important;
     }
 
     .dropdown-menu {
         position: absolute !important;
-        left: -200% !important;
+        left: -100% !important;
 
         .dropdown-item:hover {
             color: #ff8d34 !important;
@@ -94,17 +101,15 @@ input.error {
 }
 
 .pagination {
-
     .page-item {
         .page-link {
             color: #ff8d34 !important;
         }
     }
 
-    .active>.page-link {
+    .active > .page-link {
         background-color: #ff8d34 !important;
         border-color: #ff8d34 !important;
         color: #ffffff !important;
     }
-
 }

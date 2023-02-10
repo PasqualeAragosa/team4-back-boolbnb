@@ -35,6 +35,7 @@ class UpdatePropertyRequest extends FormRequest
             'image' => 'nullable|image|max:300',
             'visibility' => 'boolean',
             'description' => 'nullable',
+            'amenities' => 'exists:amenities,id'
         ];
     }
 }

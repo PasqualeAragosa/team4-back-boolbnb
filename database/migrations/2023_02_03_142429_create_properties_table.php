@@ -22,7 +22,7 @@ return new class extends Migration
             $table->tinyInteger('beds_num')->nullable();
             $table->tinyInteger('baths_num')->nullable();
             $table->smallInteger('square_meters')->nullable();
-            $table->string('address')->nullable();
+            $table->string('address');
             $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->boolean('visibility')->default(0);
