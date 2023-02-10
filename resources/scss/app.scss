@@ -6,7 +6,7 @@ body {
 }
 
 h1 {
-    font-family: 'Marck Script', cursive;
+    font-family: "Marck Script", cursive;
     font-size: 42px;
 }
 
@@ -94,17 +94,15 @@ input.error {
 }
 
 .pagination {
-
     .page-item {
         .page-link {
             color: #ff8d34 !important;
         }
     }
 
-    .active>.page-link {
+    .active > .page-link {
         background-color: #ff8d34 !important;
         border-color: #ff8d34 !important;
         color: #ffffff !important;
     }
-
 }

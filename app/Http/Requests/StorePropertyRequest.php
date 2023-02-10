@@ -31,7 +31,7 @@ class StorePropertyRequest extends FormRequest
             'beds_num' => 'nullable|numeric',
             'baths_num' => 'nullable|numeric',
             'square_meters' => 'nullable|numeric',
-            'address' => 'nullable|min:2|max:60',
+            'address' => 'required|min:2|max:60',
             'image' => 'nullable|image|max:300',
             'visibility' => 'boolean',
             'description' => 'nullable',
