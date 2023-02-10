@@ -16,7 +16,7 @@
 <p>Rooms: {{$property->rooms_num}}</p>
 <p>Beds: {{$property->beds_num}}</p>
 <p>Square Meters: {{$property->square_meters}}</p>
-
+<!-- type -->
 <div class="amenities">
     <span>Amenities:</span>
     @if(count($property->amenities) > 0 )
