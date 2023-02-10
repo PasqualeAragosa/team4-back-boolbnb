@@ -9,12 +9,12 @@
 </div>
 @include('partials.message')
 
-<div class="row row-cols-1 row-cols-md-2 g-4 mb-4">
+<div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
     @foreach($properties as $property)
     <div class="col">
         <div class="card shadow border-0">
             @if($property->image)
-            <img class="card-img-top img-fluid" src="{{asset('storage/' . $property->image)}}" alt="">
+            <img class="card-img-top img-fluid"  src="{{asset('storage/' . $property->image)}}" alt="">
             @else
             <img class="card-img-top img-fluid" src="/images/placeholder.png" alt="">
             @endif

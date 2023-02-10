@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="content-header p-5">
+<div class="content-header p-5 mb-4">
     <div class="row row-cols-1 row-cols-md-2">
         <div class="col d-flex justify-content-center align-items-center">
             <div class="property_title text-center px-3">
@@ -29,7 +29,7 @@
         </div>
     </div>
 </div>
-<div class="content-body pt-3 px-5">
+<div class="content-body pt-5 px-5">
     <div class="row row-cols-1 row-cols-md-2">
         <div class="col text-center">
             <div class="info d-flex justify-content-around mb-3">
