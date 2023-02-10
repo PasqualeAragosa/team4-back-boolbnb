@@ -12,7 +12,7 @@
 <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
     @foreach($properties as $property)
     <div class="col">
-        <div class="card shadow border-0">
+        <div class="card shadow border-0" style="height:100%">
             @if($property->image)
             <img class="card-img-top img-fluid"  src="{{asset('storage/' . $property->image)}}" alt="">
             @else
