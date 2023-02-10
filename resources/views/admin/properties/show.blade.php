@@ -18,7 +18,7 @@
 <p class="text-orange"><i class="fa-solid fa-bed"></i> {{$property->beds_num}}</p>
 <p class="text-orange">{{$property->square_meters}} m</p>
 </div>
-
+<p>Address: {{$property->address}}</p>
 
 @if($property->visibility)
 <h5 class="text-orange">Available</h5>
@@ -29,6 +29,20 @@
 <div class="description mb-3">
     {{$property->description}}
 </div>
-<p>Amenities: {{$property->amenity}}</p>
+<!-- type -->
+<div class="amenities">
+    <span>Amenities:</span>
+    @if(count($property->amenities) > 0 )
+
+
+    @foreach ($property->amenities as $amenity)
+    <span>{{$amenity->name}}</span>
+    @endforeach
+
+    @else
+    <span>Not Amenities associated to the property</span>
+    @endif
+
+</div>
 </div>
 @endsection

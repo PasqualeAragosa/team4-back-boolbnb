@@ -82,10 +82,15 @@ class PropertyController extends Controller
         }
 
         // create property
-        Property::create($val_data);
+        $property = Property::create($val_data);
+
+        // attach the selected amenities
+        if ($request->has('amenities')) {
+            $property->amenities()->attach($val_data['amenities']);
+        }
 
         // redirect
-        return to_route('admin.properties.index')->with('message', 'Property added successfully');
+        return to_route('admin.properties.index')->with('message', "Property id: $property->id added successfully");
     }
 
     /**
@@ -110,10 +115,12 @@ class PropertyController extends Controller
      */
     public function edit(Property $property)
     {
+        $amenities = Amenity::all();
+
         if (Auth::id() != $property->user_id) {
             abort(403);
         }
-        return view('admin.properties.edit', compact('property'));
+        return view('admin.properties.edit', compact('property', 'amenities'));
     }
 
     /**
@@ -157,10 +164,18 @@ class PropertyController extends Controller
         $property_slug = Property::generateSlug($val_data['title']);
         $val_data['slug'] = $property_slug;
 
+        //update the visibility
         if ($visibility == 1) {
             $property->update(['visibility' => true]);
         } else {
             $property->update(['visibility' => false]);
+        }
+
+        // update the selected amenities
+        if ($request->has('amenities')) {
+            $property->amenities()->sync($val_data['amenities']);
+        } else {
+            $property->amenities()->sync([]);
         }
 
         // update resource
@@ -183,6 +198,6 @@ class PropertyController extends Controller
 
         $property->delete();
 
-        return to_route('admin.properties.index')->with('message', 'Property deleted successfully');
+        return to_route('admin.properties.index')->with('message', "Property id: $property->id deleted successfully");
     }
 }
