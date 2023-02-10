@@ -43,7 +43,7 @@
              <!-- type -->
     <div class="type">
         <span>Type:</span>
-        {{ $property->type ? $property->type->name : 'Uncategorized'}}
+        {{ $property->type ? $property->type->name : 'No type'}}
     </div>
     <!-- /.type -->
             <div class="amenities">

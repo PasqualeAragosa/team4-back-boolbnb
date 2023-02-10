@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Property extends Model
 {
-    protected $fillable = ['title', 'slug', 'price', 'description', 'rooms_num', 'beds_num', 'baths_num', 'square_meters', 'address', 'image', 'visibility', 'longitude', 'latitude', 'user_id'];
+    protected $fillable = ['title', 'slug', 'price', 'description', 'rooms_num', 'beds_num', 'baths_num', 'square_meters', 'address', 'image', 'visibility', 'longitude', 'latitude', 'user_id', 'type_id'];
     use HasFactory;
 
     public static function generateSlug($title)
@@ -37,7 +37,7 @@ class Property extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function types(): BelongsTo
+    public function type(): BelongsTo
     {
         return $this->belongsTo(Type::class);
     }

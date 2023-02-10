@@ -91,15 +91,16 @@
         <div class="mb-3">
             <label for="type_id" class="form-label text-orange">Types</label>
             <select class="form-select form-select-md @error('type_id') 'is-invalid' @enderror" name="type_id" id="type_id">
-                <option value="">Uncategorize</option>
+                <option disabled selected value="">Update Type</option>
 
                 @forelse ($types as $type)
                 <option value="{{$type->id}}" {{ $type->id == old('type_id',  $property->type ? $property->type->id : '') ? 'selected' : '' }}>
-                    {{$property->name}}
+                    {{$type->name}}
                 </option>
                 @empty
                 <option value="">No Types in the system.</option>
                 @endforelse
+
 
             </select>
         </div>

@@ -48,7 +48,7 @@
         <div class="mb-3">
             <label for="type_id" class="form-label text-orange">Type</label>
             <select class="form-select form-select-md @error('type_id') 'is-invalid' @enderror" name="type_id" id="type_id">
-                <option value="">No type</option>
+                <option disabled selected value="">Select a Type</option>
 
                 @foreach ($types as $type)
                 <option value="{{$type->id}}" {{ old('type_id') ? 'selected' : '' }}>{{$type->name}}</option>
