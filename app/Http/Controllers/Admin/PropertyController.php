@@ -6,10 +6,11 @@ use App\Http\Requests\StorePropertyRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdatePropertyRequest;
 use App\Models\Property;
+use App\Models\Amenity;
+use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
-use App\Models\Amenity;
 
 class PropertyController extends Controller
 {
@@ -36,8 +37,9 @@ class PropertyController extends Controller
     public function create()
     {
         $amenities = Amenity::all();
+        $types = Type::all();
 
-        return view('admin.properties.create', compact('amenities'));
+        return view('admin.properties.create', compact('amenities', 'types'));
     }
 
     /**
@@ -63,6 +65,7 @@ class PropertyController extends Controller
         $val_data['longitude'] = $coordinates['results'][0]['position']['lon'];
         // dd($response);
 
+        // image
         if ($request->hasFile('image')) {
             $image = Storage::put('uploads', $val_data['image']);
             $val_data['image'] = $image;
@@ -75,6 +78,7 @@ class PropertyController extends Controller
         // assegnazione del post corrente autenticato user
         $val_data['user_id'] = Auth::id();
 
+        // visibility
         if ($visibility == 1) {
             $val_data['visibility'] = true;
         } else {
@@ -116,11 +120,12 @@ class PropertyController extends Controller
     public function edit(Property $property)
     {
         $amenities = Amenity::all();
+        $types = Type::all();
 
         if (Auth::id() != $property->user_id) {
             abort(403);
         }
-        return view('admin.properties.edit', compact('property', 'amenities'));
+        return view('admin.properties.edit', compact('property', 'amenities', 'types'));
     }
 
     /**
