@@ -119,9 +119,8 @@
 
 
 
-        <div class="mb-3">
+        <div class="mb-3 address">
             <label for="address" class="form-label">Address</label>
-            <small id="titleHlper" class="text-muted">Update the Property Address</small>
         </div>
         @error('address')
         <div class="alert alert-danger" role="alert">

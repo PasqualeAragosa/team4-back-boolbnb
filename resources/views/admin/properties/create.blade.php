@@ -78,8 +78,7 @@
         <!-- Address -->
         <div class="mb-3 address">
             <label for="address" class="form-label">Address</label>
-            &ast;
-            <small id="helpAddress" class="text-muted">Please Enter The Address</small>
+
         </div>
         <!-- /.Address -->
 
