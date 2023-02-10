@@ -43,8 +43,25 @@
             <small id="helpSquare_meters" class="text-muted">Please Enter The Square Meters</small>
         </div>
         <!-- /.Square_meters -->
+
+        <!-- Type -->
+        <div class="mb-3">
+            <label for="type_id" class="form-label">Type</label>
+            <select class="form-select form-select-sm @error('type_id') 'is-invalid' @enderror" name="type_id" id="type_id">
+                <option value="">No type</option>
+
+                @foreach ($types as $type)
+                <option value="{{$type->id}}" {{ old('type_id') ? 'selected' : '' }}>{{$type->name}}</option>
+                @endforeach
+
+            </select>
+        </div>
+        <!-- /.Type -->
+
+        <!-- Amenity -->
         <div class="mb-3">
             <label for="amenities" class="form-label text-orange">Please select the Amenity</label>
+
             <div class="d-flex flex-wrap">
                 @forelse ($amenities as $amenity)
                 <div class="p-2 d-flex align-items-center" style="width: 200px">
@@ -57,11 +74,8 @@
             </div>
         </div>
         <!-- /.Amenity -->
-        <div class="mb-3">
-            <label for="address" class="form-label text-orange">Address</label>
-            <input type="text" name="address" id="address" class="form-control @error('address') is-invalid @enderror" placeholder="8888 Cummings Vista Apt. 101, Susanbury, NY 95473" aria-describedby="helpAddress" value="{{old('address')}}" required>
-            &ast;
-            <small id="helpAddress" class="text-muted">Please Enter The Address</small>
+        <div class="mb-3 address">
+            <label for="address" class="form-label">Address</label>
         </div>
         <!-- /.Address -->
         <div class="mb-3">
@@ -96,4 +110,5 @@
 
     @include('partials.validation')
 
+    @include('partials.autocomplete')
 @endsection

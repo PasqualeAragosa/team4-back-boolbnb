@@ -41,7 +41,7 @@
         </div>
         @enderror
 
-        
+
         <div class="mb-3">
             <label for="rooms_num" class="form-label text-orange">Rooms</label>
             <input type="number" name="rooms_num" id="rooms_num" class="form-control @error('rooms_num') is-invalid @enderror" placeholder="4" aria-describedby="roomHlper" value="{{old('rooms_num', $property->rooms_num)}}" min="1" max="100">
@@ -87,6 +87,24 @@
         </div>
         @enderror
 
+        <!-- Type -->
+        <div class="mb-3">
+            <label for="type_id" class="form-label">Types</label>
+            <select class="form-select form-select-lg @error('type_id') 'is-invalid' @enderror" name="type_id" id="type_id">
+                <option value="">Uncategorize</option>
+
+                @forelse ($types as $type)
+                <option value="{{$type->id}}" {{ $type->id == old('type_id',  $property->type ? $property->type->id : '') ? 'selected' : '' }}>
+                    {{$property->name}}
+                </option>
+                @empty
+                <option value="">No Types in the system.</option>
+                @endforelse
+
+            </select>
+        </div>
+        <!-- /.Type -->
+
         <!-- Amenity -->
         <div class="mb-3">
             <label for="amenities" class="form-label text-orange">Amenity</label>
@@ -112,11 +130,8 @@
             </div>
         </div>
         <!-- /.Amenity -->
-        <div class="mb-3">
-            <label for="address" class="form-label text-orange">Address</label>
-            <input type="text" name="address" id="address" class="form-control @error('address') is-invalid @enderror" placeholder="" aria-describedby="titleHlper" value="{{old('address', $property->address)}}" required>
-            &ast;
-            <small id="titleHlper" class="text-muted">Update the Property Address</small>
+        <div class="mb-3 address">
+            <label for="address" class="form-label">Address</label>
         </div>
         @error('address')
         <div class="alert alert-danger" role="alert">
@@ -162,5 +177,6 @@
 
     @include('partials.validation')
 
+    @include('partials.autocomplete')
 
 @endsection

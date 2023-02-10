@@ -24,16 +24,12 @@ class MessageController extends Controller
         $properties = Property::where('user_id', Auth::id())->get();
         $prop_ut = [];
 
-
-
         foreach ($properties as $property) {
             array_push($prop_ut, $property['id']);
         }
-        //dd($prop_ut);
 
         $messages = Message::whereIn('property_id', $prop_ut)->get();
         //dd($messages);
-        //dd($properties);
 
         return view('admin.messages.index', compact('messages', 'properties'));
     }
@@ -101,8 +97,6 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        $message->delete();
-
-        return to_route('admin.messages.index')->with('message', "$message->id message deleted successfully");
+        //
     }
 }

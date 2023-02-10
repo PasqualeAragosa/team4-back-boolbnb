@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
 <div class="content-header p-5">
     <div class="row row-cols-1 row-cols-md-2">
         <div class="col d-flex justify-content-center align-items-center">
@@ -39,7 +40,12 @@
             <div class="description mb-3">
                 {{$property->description}}
             </div>
-            <!-- type -->
+             <!-- type -->
+    <div class="type">
+        <span>Type:</span>
+        {{ $property->type ? $property->type->name : 'Uncategorized'}}
+    </div>
+    <!-- /.type -->
             <div class="amenities">
                 <h5 class="text-orange">Amenities:</h5>
                 @if(count($property->amenities) > 0 )
