@@ -15,7 +15,7 @@
         <!-- /.Title -->
         <div class="mb-3">
             <label for="price" class="form-label text-orange">Price</label>
-            <input type="number" name="price" id="price" class="form-control @error('price') is-invalid @enderror" placeholder="€ 60,00" aria-describedby="helpRooms_num" value="{{old('price')}}" min="20" max="9999">
+            <input type="number" name="price" id="price" class="form-control @error('price') is-invalid @enderror" placeholder="€ 60,00" aria-describedby="helpRooms_num" value="{{old('price')}}" step="0.01" min="20" max="9999">
             <small id="helpPrice" class="text-muted">Please Enter The Price</small>
         </div>
         <!-- Rooms_num -->
@@ -62,10 +62,10 @@
         <div class="mb-3">
             <label for="amenities" class="form-label text-orange">Please select the Amenity</label>
 
-            <div class="d-flex flex-wrap">
+            <div class="d-flex flex-wrap checkbox">
                 @forelse ($amenities as $amenity)
                 <div class="p-2 d-flex align-items-center" style="width: 200px">
-                    <input type="checkbox" name="amenities[]" id="amenities" value="{{$amenity->id}}" {{ in_array($amenity->id, old('amenities', [])) ? 'checked' : '' }}>
+                    <input type="checkbox" name="amenities[]" id="amenities" value="{{$amenity->id}}" {{ in_array($amenity->id, old('amenities', [])) ? 'checked' : '' }} required>
                     <p class="ms-2 m-0">{{ $amenity->name }}</p>
                 </div>
                 @empty
@@ -111,4 +111,23 @@
     @include('partials.validation')
 
     @include('partials.autocomplete')
+{{-- 
+    <script>
+        document.querySelector('button').addEventListener('click',function(){
+           
+                const requiredCheckboxes = document.queryselector('.checkbox input');
+                    console.log(requiredCheckboxes);
+                     requiredCheckboxes.change(function(){
+                     if(requiredCheckboxes.is('checked')) {
+                    requiredCheckboxes.removeAttr('required');
+                } else {
+                requiredCheckboxes.attr('required', 'required');
+                }
+            });
+            
+        
+        })
+
+
+    </script> --}}
 @endsection

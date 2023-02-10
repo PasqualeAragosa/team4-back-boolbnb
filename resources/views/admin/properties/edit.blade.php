@@ -32,7 +32,7 @@
 
         <div class="mb-3">
             <label for="price" class="form-label text-orange">Price</label>
-            <input type="number" name="price" id="price" class="form-control @error('price') is-invalid @enderror" placeholder="€ 60,00" aria-describedby="priceHlper" value="{{old('price', $property->price)}}" min="20" max="9999">
+            <input type="number" name="price" id="price" class="form-control @error('price') is-invalid @enderror" placeholder="€ 60,00" aria-describedby="priceHlper" value="{{old('price', $property->price)}}" step="0.01" min="20" max="9999">
             <small id="priceHlper" class="text-muted">Update The Price</small>
         </div>
         @error('price')
