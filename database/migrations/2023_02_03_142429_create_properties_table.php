@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('title', 100)->unique();
             $table->string('slug');
             $table->float('price', 6, 2)->nullable();
-            $table->tinyInteger('rooms_num')->nullable();
-            $table->tinyInteger('beds_num')->nullable();
+            $table->tinyInteger('rooms_num');
+            $table->tinyInteger('beds_num');
             $table->tinyInteger('baths_num')->nullable();
             $table->smallInteger('square_meters')->nullable();
             $table->string('address');

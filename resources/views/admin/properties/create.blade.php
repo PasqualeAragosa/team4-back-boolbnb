@@ -21,22 +21,24 @@
     <!-- Rooms_num -->
     <div class="mb-3">
         <label for="rooms_num" class="form-label text-orange">Rooms</label>
-        <input type="number" name="rooms_num" id="rooms_num" class="form-control @error('rooms_num') is-invalid @enderror" placeholder="4" aria-describedby="helpRooms_num" value="{{old('rooms_num')}}" min="1" max="100">
+        <input type="number" name="rooms_num" id="rooms_num" class="form-control @error('rooms_num') is-invalid @enderror" placeholder="4" aria-describedby="helpRooms_num" value="{{old('rooms_num')}}" min="1" max="100" required>
         <small id="helpRooms_num" class="text-muted">Please Enter The Total Rooms</small>
     </div>
     <!-- /.Rooms_num -->
     <div class="mb-3">
         <label for="beds_num" class="form-label text-orange">Beds</label>
-        <input type="number" name="beds_num" id="beds_num" class="form-control @error('beds_num') is-invalid @enderror" placeholder="2" aria-describedby="helpBeds_num" value="{{old('beds_num')}}" min="1" max="100">
+        <input type="number" name="beds_num" id="beds_num" class="form-control @error('beds_num') is-invalid @enderror" placeholder="2" aria-describedby="helpBeds_num" value="{{old('beds_num')}}" min="1" max="100" required>
         <small id="helpBeds_num" class="text-muted">Please Enter The Total Beds</small>
     </div>
     <!-- /.Beds_num -->
+
     <div class="mb-3">
         <label for="baths_num" class="form-label text-orange">Baths</label>
         <input type="number" name="baths_num" id="baths_num" class="form-control @error('baths_num') is-invalid @enderror" placeholder="1" aria-describedby="helpBaths_num" value="{{old('baths_num')}}" min="1" max="100">
         <small id="helpBaths_num" class="text-muted">Please Enter The Total Baths</small>
     </div>
     <!-- /.Baths_num -->
+
     <div class="mb-3">
         <label for="square_meters" class="form-label text-orange">Square meters</label>
         <input type="number" name="square_meters" id="square_meters" class="form-control @error('square_meters') is-invalid @enderror" placeholder="80 mq" aria-describedby="helpSquare_meters" value="{{old('square_meters')}}" min="10" max="1000">
@@ -90,10 +92,11 @@
 
     <div class="mb-3">
         <label for="description" class="form-label text-orange">Description</label>
-        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="5" minlength="5" maxlength="255">{{old('description')}}</textarea>
+        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="5" minlength="5">{{old('description')}}</textarea>
         <small id="helpDescription" class="text-muted">Please Enter The Description</small>
     </div>
     <!-- /.Description -->
+
     <div class="mb-3 d-flex flex-column">
         <label for="visibility" class="form-label text-orange">Is the property available ?</label>
         <div>
@@ -102,6 +105,7 @@
         </div>
     </div>
     <!-- /.Visibility -->
+
     <div class="d-flex justify-content-between">
         <button type="submit" class="btn bck-orange rounded-pill text-white text-uppercase">Submit</button>
         <a href="{{route('admin.properties.index')}}" class="btn bck-orange text-white">
