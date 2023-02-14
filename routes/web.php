@@ -31,7 +31,8 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
         'properties' => 'property:slug'
     ]);
     Route::resource('sponsorships', SponsorshipController::class)->except(['create', 'store', 'show', 'edit', 'update', 'destroy']);
-    Route::resource('messages', MessageController::class)->except(['create', 'store', 'edit', 'update', 'destroy']);
+    Route::resource('messages', MessageController::class)->except(['create', 'edit', 'update', 'destroy']);
 });
+
 
 require __DIR__ . '/auth.php';

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Property;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 
 class MessageController extends Controller
@@ -54,6 +55,7 @@ class MessageController extends Controller
     {
         //
     }
+
 
     /**
      * Display the specified resource.
