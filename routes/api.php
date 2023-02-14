@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\API\MessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Property;
+use App\Models\Message;
 use App\Http\Controllers\API\PropertyController;
 
 /*
@@ -23,3 +25,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/properties', [PropertyController::class, 'index']);
 Route::get('/properties/{property:slug}', [PropertyController::class, 'show']);
 Route::get('/properties/search/lng={lng}/lat={lat}/radius={radius}', [PropertyController::class, 'searchProperties'])->name('apartments.search');
+Route::post('/messages', [MessageController::class, 'store']);
+

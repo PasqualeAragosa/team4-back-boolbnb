@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Message extends Model
 {
+
+    protected $fillable = ['guest_full_name', 'email', 'guest_phone_number', 'property_id', 'content'];
     use HasFactory;
 
     /**
