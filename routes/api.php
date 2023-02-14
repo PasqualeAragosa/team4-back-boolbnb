@@ -24,5 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/properties', [PropertyController::class, 'index']);
 Route::get('/properties/{property:slug}', [PropertyController::class, 'show']);
-Route::get('/properties/search', [PropertyController::class, 'search']);
+Route::get('/properties/search/lng={lng}/lat={lat}/radius={radius}', [PropertyController::class, 'searchProperties'])->name('apartments.search');
 Route::post('/messages', [MessageController::class, 'store']);
+
