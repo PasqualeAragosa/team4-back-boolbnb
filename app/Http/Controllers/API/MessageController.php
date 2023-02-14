@@ -18,18 +18,20 @@ class MessageController extends Controller
         $validator = Validator::make(
             $data,
             [
-                'email_sender' => 'required|email',
-                'text' => 'required'
+                'guest_full_name' => 'required',
+                'email' => 'required|email',
+                'content' => 'required',
+                'guest_phone_number' => 'required',
+                'property_id' => 'exists:properties,id'
             ],
-            [
-                'email_sender.required' => 'La mail è obbligatoria .',
-                'text.required' => 'Il testo del messaggio è obbligatorio .'
-            ]
         );
 
 
         if ($validator->fails()) {
-            return response()->json([$validator->errors()]);
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ]);
         }
 
 
