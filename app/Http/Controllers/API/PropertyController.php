@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Property;
-
+use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller
 {
@@ -18,9 +18,9 @@ class PropertyController extends Controller
         ]);
     }
 
-    public function show ($slug)
+    public function show($slug)
     {
-        $property = Property::with('user','type', 'amenities', 'sponsorships', 'views', 'messages')->where('slug', $slug)->first();
+        $property = Property::with('user', 'type', 'amenities', 'sponsorships', 'views', 'messages')->where('slug', $slug)->first();
 
         if ($property) {
             return response()->json([
@@ -33,51 +33,70 @@ class PropertyController extends Controller
                 'results' => 'Property not found'
             ]);
         }
+    }
 
-    } 
+    // ricerca appartamenti
+    public function searchProperties($lng, $lat, $radius,)
+    {
 
-    public function search(Request $request){
-        $location = $request->input('location');
 
-        $geocoded = Http::withoutVerifying()->get('https://api.tomtom.com/search/2/geocode/'. $location .'.json', [
-            'key' => config('services.tomtom.key'),
-            'limit' => '1'
-        ]);
+        $properties = Property::with(['type', 'amenities', 'sponsorships', 'views', 'messages'])->get();
 
-       
-        $lat = $geocoded['results'][0]['position']['lat'];
-        $lon = $geocoded['results'][0]['position']['lon'];
-        
-        $properties = Property::all();
 
-        $filtered = [];
-        foreach($properties as $property) {
-            $distance = self::getDistance($lat, $lon, $property->latitude, $property->longitude);
-            if($distance <= 20000) {
-                array_push($filtered, $property);
-            };
+        //DB::table('properties')
+        //->where('rooms', '>=', $nRooms)
+        //->where('beds', '>=', $nBeds)
+        // -> join('apartment_service', 'apartments.id', '=', 'apartment_service.apartment_id')
+        // -> join('services', 'services.id', '=', 'apartment_service.service_id')
+        //  -> where('services.name', $selectedServices)
+        // -> select('apartments.*') -> distinct()
+        //->orderBy('sponsor', 'desc')
+        //  ->get();
+
+        $propertiesInRange = [];
+
+        foreach ($properties as $property) {
+
+            // raggio di ricerca default 20km
+            if ($this->haversineGreatCircleDistance($lat, $lng, $property->latitude, $property->longitude) < $radius) {
+                array_push($propertiesInRange, $property);
+            }
         }
 
-        return compact('filtered', 'lat', 'lon');
+        return json_encode($propertiesInRange);
     }
 
 
-    protected function getDistance($lat1, $lon1, $lat2, $lon2) {
+    /**
+     * Calculates the great-circle distance between two points, with
+     * the Haversine formula.
+     * @param float $latitudeFrom Latitude of start point in [deg decimal]
+     * @param float $longitudeFrom Longitude of start point in [deg decimal]
+     * @param float $latitudeTo Latitude of target point in [deg decimal]
+     * @param float $longitudeTo Longitude of target point in [deg decimal]
+     * @param float $earthRadius Mean earth radius in [m]
+     * @return float Distance between points in [m] (same as earthRadius)
+     */
 
-        $R = 6371000;
+    // funzione per calcolare distanza tra due punti
+    public function haversineGreatCircleDistance(
+        $latitudeFrom,
+        $longitudeFrom,
+        $latitudeTo,
+        $longitudeTo,
+        $earthRadius = 6371000
+    ) {
+        // convert from degrees to radians
+        $latFrom = deg2rad($latitudeFrom);
+        $lonFrom = deg2rad($longitudeFrom);
+        $latTo = deg2rad($latitudeTo);
+        $lonTo = deg2rad($longitudeTo);
 
-        $lat1 = round($lat1 * (M_PI / 180), 14);
-        $lat2 = round($lat2 * (M_PI / 180), 14);
+        $latDelta = $latTo - $latFrom;
+        $lonDelta = $lonTo - $lonFrom;
 
-        $deltaLat = round(($lat2-$lat1) * (M_PI / 180), 14);
-        $deltaLon = round(($lon2-$lon1) * (M_PI / 180), 14);
-        
-        //$d = asin( sin($lat1)*sin($lat2) + cos($lat1)*cos($lat2) * cos($deltaLon) ) * $R;
-        $a = pow(sin($deltaLat/2), 2) + cos($lat1) * cos($lat2) * pow(sin($deltaLon/2), 2);
-        $c = 2 * atan2(sqrt($a),sqrt(1-$a));
-
-        $d = $R * $c;
-
-        return $d;
+        $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
+            cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+        return $angle * $earthRadius;
     }
 }
