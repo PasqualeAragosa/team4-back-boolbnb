@@ -26,5 +26,5 @@ Route::get('/properties', [PropertyController::class, 'index']);
 Route::get('/properties/{property:slug}', [PropertyController::class, 'show']);
 Route::get('/properties/search/lng={lng}/lat={lat}/radius={radius}', [PropertyController::class, 'searchProperties']);
 Route::post('/messages', [MessageController::class, 'store']);
-Route::get('/properties/filteredsearch/lng={lng}/lat={lat}/radius={radius}/beds={beds}/rooms={rooms}', [PropertyController::class, 'filteredSearch']);
+Route::get('/properties/filteredsearch/lng={lng}/lat={lat}/radius={radius}/rooms={rooms}/beds={beds}', [PropertyController::class, 'filteredSearch']);
 

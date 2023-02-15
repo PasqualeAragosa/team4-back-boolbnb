@@ -57,15 +57,14 @@ class PropertyController extends Controller
 
     public function filteredSearch($lng, $lat, $radius,$rooms, $beds){
 
-        
-        $properties = Property::with(['type', 'amenities', 'sponsorships', 'views', 'messages'])->get();
+        $properties = Property::with(['type', 'amenities', 'sponsorships', 'views', 'messages'])->orderByDesc('id')->paginate(8);
 
         $filteredProperties = [];
         
         foreach ($properties as $property) {
 
             // raggio di ricerca default 20km
-            if ($this->haversineGreatCircleDistance($lat, $lng, $property->latitude, $property->longitude) < $radius && $property->rooms_num == $rooms && $property->beds_num == $beds) {
+            if ($this->haversineGreatCircleDistance($lat, $lng, $property->latitude, $property->longitude) < $radius && $property->rooms_num >= $rooms && $property->beds_num >= $beds) {
                 array_push($filteredProperties, $property);
             }
         }
@@ -108,3 +107,4 @@ class PropertyController extends Controller
         return $angle * $earthRadius;
     }
 }
+        
