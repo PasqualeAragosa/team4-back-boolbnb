@@ -42,17 +42,6 @@ class PropertyController extends Controller
 
         $properties = Property::with(['type', 'amenities', 'sponsorships', 'views', 'messages'])->get();
 
-
-        //DB::table('properties')
-        //->where('rooms', '>=', $nRooms)
-        //->where('beds', '>=', $nBeds)
-        // -> join('apartment_service', 'apartments.id', '=', 'apartment_service.apartment_id')
-        // -> join('services', 'services.id', '=', 'apartment_service.service_id')
-        //  -> where('services.name', $selectedServices)
-        // -> select('apartments.*') -> distinct()
-        //->orderBy('sponsor', 'desc')
-        //  ->get();
-
         $propertiesInRange = [];
 
         foreach ($properties as $property) {
@@ -64,6 +53,25 @@ class PropertyController extends Controller
         }
 
         return json_encode($propertiesInRange);
+    }
+
+    public function filteredSearch($lng, $lat, $radius,$rooms, $beds){
+
+        
+        $properties = Property::with(['type', 'amenities', 'sponsorships', 'views', 'messages'])->get();
+
+        $filteredProperties = [];
+        
+        foreach ($properties as $property) {
+
+            // raggio di ricerca default 20km
+            if ($this->haversineGreatCircleDistance($lat, $lng, $property->latitude, $property->longitude) < $radius && $property->rooms_num == $rooms && $property->beds_num == $beds) {
+                array_push($filteredProperties, $property);
+            }
+        }
+        
+        return json_encode($filteredProperties);
+
     }
 
 
