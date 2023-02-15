@@ -35,63 +35,7 @@ class MessageController extends Controller
         return view('admin.messages.index', compact('messages', 'properties'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreMessageRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreMessageRequest $request)
-    {
-        $data = $request->all();
-
-        dd($data);
-
-        $validator = Validator::make(
-            $data,
-            [
-                'guest_full_name' => 'required',
-                'email' => 'required|email',
-                'content' => 'required',
-                'guest_phone_number' => 'required',
-                'property_id' => 'exists:properties,id'
-            ],
-        );
-
-
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'errors' => $validator->errors()
-            ]);
-        }
-
-
-        $newMessage  = new Message();
-        if (!empty($data['object'])) {
-            $newMessage->object = $data['object'];
-        }
-        $newMessage->guest_full_name = $data['guest_full_name'];
-        $newMessage->guest_phone_number = $data['guest_phone_number'];
-        $newMessage->content = $data['content'];
-        $newMessage->email = $data['email'];
-        $newMessage->property_id = $data['property_id'];
-        $newMessage->save();
-
-        return response()->json([
-            "success" => true
-        ]);
-    }
 
 
     /**

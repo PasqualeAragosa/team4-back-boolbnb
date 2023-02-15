@@ -55,22 +55,26 @@ class PropertyController extends Controller
         return json_encode($propertiesInRange);
     }
 
-    public function filteredSearch($lng, $lat, $radius,$rooms, $beds){
+    public function filteredSearch($lng, $lat, $radius, $rooms, $beds, $amenities)
+    {
 
         $properties = Property::with(['type', 'amenities', 'sponsorships', 'views', 'messages'])->orderByDesc('id')->paginate(8);
 
         $filteredProperties = [];
-        
+
         foreach ($properties as $property) {
 
             // raggio di ricerca default 20km
             if ($this->haversineGreatCircleDistance($lat, $lng, $property->latitude, $property->longitude) < $radius && $property->rooms_num >= $rooms && $property->beds_num >= $beds) {
-                array_push($filteredProperties, $property);
+                foreach ($amenities as $amenity) {
+                    if (in_array($amenity, $property->amenities)) {
+                        array_push($filteredProperties, $property);
+                    }
+                }
             }
         }
-        
-        return json_encode($filteredProperties);
 
+        return json_encode($filteredProperties);
     }
 
 
@@ -107,4 +111,3 @@ class PropertyController extends Controller
         return $angle * $earthRadius;
     }
 }
-        

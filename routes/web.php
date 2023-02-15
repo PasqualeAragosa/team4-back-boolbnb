@@ -31,7 +31,7 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::resource('properties', PropertyController::class)->parameters([
         'properties' => 'property:slug'
     ]);
-    Route::resource('messages', MessageController::class)->except(['create', 'edit', 'update', 'destroy']);
+    Route::resource('messages', MessageController::class)->except(['create', 'edit', 'update', 'destroy', 'store']);
 
     Route::resource('sponsorships', SponsorshipController::class)->except(['create', 'store', 'show', 'edit', 'update', 'destroy']);
 });

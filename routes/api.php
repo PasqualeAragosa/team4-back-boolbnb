@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Property;
+use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\PropertyController;
 
 
@@ -25,3 +26,4 @@ Route::get('/properties', [PropertyController::class, 'index']);
 Route::get('/properties/{property:slug}', [PropertyController::class, 'show']);
 Route::get('/properties/search/lng={lng}/lat={lat}/radius={radius}', [PropertyController::class, 'searchProperties']);
 Route::get('/properties/filteredsearch/lng={lng}/lat={lat}/radius={radius}/rooms={rooms}/beds={beds}', [PropertyController::class, 'filteredSearch']);
+Route::post('/messages', [MessageController::class, 'store']);
