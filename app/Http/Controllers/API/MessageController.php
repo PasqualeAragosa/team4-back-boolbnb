@@ -19,10 +19,10 @@ class MessageController extends Controller
             $data,
             [
                 'guest_full_name' => 'required',
-                'email' => 'required|email',
+                'guest_email' => 'required|email',
                 'content' => 'required',
                 'guest_phone_number' => 'required',
-                'property_id' => 'exists:properties,id'
+                'property_id' => 'required'
             ],
         );
 
@@ -36,18 +36,19 @@ class MessageController extends Controller
 
 
         $newMessage  = new Message();
-        if (!empty($data['object'])) {
+        /* if (!empty($data['object'])) {
             $newMessage->object = $data['object'];
-        }
+        } */
         $newMessage->guest_full_name = $data['guest_full_name'];
         $newMessage->guest_phone_number = $data['guest_phone_number'];
         $newMessage->content = $data['content'];
-        $newMessage->email = $data['email'];
+        $newMessage->guest_email = $data['guest_email'];
         $newMessage->property_id = $data['property_id'];
         $newMessage->save();
 
         return response()->json([
-            "success" => true
+            "success" => true,
+            "data" => $newMessage
         ]);
     }
 }

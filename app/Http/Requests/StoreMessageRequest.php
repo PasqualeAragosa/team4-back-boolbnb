@@ -24,7 +24,11 @@ class StoreMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'property_id' => 'required',
+            'guest_full_name' => 'required',
+            'guest_email' => 'required|email',
+            'content' => 'required',
+            'guest_phone_number' => 'required'
         ];
     }
 }
