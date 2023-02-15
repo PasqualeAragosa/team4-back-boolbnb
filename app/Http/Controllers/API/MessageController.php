@@ -13,7 +13,7 @@ class MessageController extends Controller
     {
         $data = $request->all();
 
-        dd($data);
+
 
         $validator = Validator::make(
             $data,
