@@ -114,6 +114,7 @@
             </div>
         </div>
     </div>
+    @include('script')
 </body>
 
 </html>
