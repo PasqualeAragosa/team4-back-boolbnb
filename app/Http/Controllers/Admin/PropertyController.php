@@ -148,9 +148,14 @@ class PropertyController extends Controller
             ]);
 
             $coordinates = $response->json();
-            // dd($coordinates);
+            //dd($coordinates);
+            if($coordinates['results'] == null){
+                abort(404);
+            }
+
             $val_data['latitude'] = $coordinates['results'][0]['position']['lat'];
             $val_data['longitude'] = $coordinates['results'][0]['position']['lon'];
+
             // dd($response);
         }
 

@@ -62,7 +62,7 @@
 
     <!-- Amenity -->
     <div class="mb-3">
-        <label for="amenities" class="form-label text-orange">Please select the Amenity</label>
+        <label for="amenities" class="form-label text-orange">Please select at least one Amenity</label>
 
         <div class="d-flex flex-wrap checkbox" id="checkbox">
             @forelse ($amenities as $amenity)
@@ -100,7 +100,7 @@
     <div class="mb-3 d-flex flex-column">
         <label for="visibility" class="form-label text-orange">Is the property available ?</label>
         <div>
-            <input type="radio" name="visibility" id="visibility" value="1">
+            <input type="checkbox" name="visibility" id="visibility" value="1">
             <small id="helpVisibility" class="text-muted">Please Check if available</small>
         </div>
     </div>
@@ -123,7 +123,7 @@
 <script>
     function validateForm() {
         // Seleziono tutti checkbox
-        let checkbox = document.querySelectorAll('input[type="checkbox"]');
+        let checkbox = document.querySelectorAll('input[id="amenities"]');
         let marked_checkboxes = [];
 
         // Se un checkbox è stato selezionato viene inserito nell'array 

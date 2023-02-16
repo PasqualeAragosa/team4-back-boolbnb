@@ -129,6 +129,7 @@
             <h4>No amenities added yet in the database</h4>
             @endforelse
         </div>
+        <small id="amenityHlper" class="text-muted">Please check at least one Amenity</small>
     </div>
     <!-- /.Amenity -->
     <div class="mb-3 address">
@@ -169,7 +170,7 @@
     <div class="mb-3 d-flex flex-column">
         <label for="visibility" class="form-label text-orange">Visibility</label>
         <div>
-            <input type="radio" name="visibility" id="visibility" class="@error('visibility') is-invalid @enderror" placeholder="" aria-describedby="titleHlper" value="1" {{$property->visibility == true ? 'checked' : ''}}>
+            <input type="checkbox" name="visibility" id="visibility" class="@error('visibility') is-invalid @enderror" placeholder="" aria-describedby="titleHlper" value="1" {{$property->visibility == true ? 'checked' : ''}}>
             <small id="titleHlper" class="text-muted">Update the visibility here</small>
         </div>
     </div>
@@ -181,7 +182,7 @@
 <script>
     function validateForm() {
         // Seleziono tutti checkbox
-        let checkbox = document.querySelectorAll('input[type="checkbox"]');
+        let checkbox = document.querySelectorAll('input[id="amenities"]');
         let marked_checkboxes = [];
 
         // Se un checkbox è stato selezionato viene inserito nell'array 
