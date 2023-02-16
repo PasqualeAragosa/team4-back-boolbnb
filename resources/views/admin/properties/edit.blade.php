@@ -157,7 +157,7 @@
 
     <div class="mb-3">
         <label for="description" class="form-label text-orange">Description</label>
-        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="5" minlength="5" maxlength="255">{{old('description', $property->description)}}</textarea>
+        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="5" minlength="5">{{old('description', $property->description)}}</textarea>
         <small id="helpDescription" class="text-muted">Please Update The Description</small>
     </div>
     @error('description')

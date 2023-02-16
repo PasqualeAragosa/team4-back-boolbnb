@@ -134,7 +134,7 @@
         });
 
         if (marked_checkboxes.length < 1) {
-            document.getElementById("checkbox").setAttribute("class", "d-flex flex-wrap checkbox error");
+            document.getElementById("checkbox").setAttribute("class", "d-flex flex-wrap checkbox democlass");
             return false;
         } else {
             return true;
