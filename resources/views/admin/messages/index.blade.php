@@ -3,7 +3,9 @@
 @section('content')
 
 <div class="container">
-    <h1>Messages</h1>
+    <div class="content-header d-flex justify-content-between align-items-center py-5">
+        <h1 class="text-orange">Messages</h1>
+    </div>
 
     <table class="table mt-4 table-striped">
         <thead>
