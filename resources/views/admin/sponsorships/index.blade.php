@@ -23,9 +23,11 @@
                     </ul>
                 </div>
             @endif
-                <form method="post" id="payment-form" action="" id="payment-form">
-                    @csrf
-                    @method('POST')
+            <form method="POST" id="payment-form" action="">
+        
+                @csrf
+                @method('POST')
+                   
 
                     <div class="row row-cols-1 g-4 py-4">
                         <div class="col ">
@@ -82,61 +84,41 @@
                             <!-- /.Sponsorship -->
                         </div>
                     </div>
-                    <div for="credit-card p-5">
-                       <div class="card-top">
-                        <h5 class="text-orange mb-4"><i class="fa-regular fa-credit-card"></i> Pay with card</h5>
-                       </div>
-                        
-                        <div class="mb-3 row">
-                               <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Fullname') }}</label>
-                               <div class="col-md-6">
-                                   <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autofocus>
-                               </div>
-                        </div>
-                        <!-- /.Name -->
-
-                        <div class="mb-3 row">
-                            <label for="credit-card-number" class="col-md-4 col-form-label text-md-end">{{ __('CC Number') }}</label>
-                            <div class="col-md-6">
-                               <input id="credit-card-number" type="number" class="form-control @error('credit-card-number') is-invalid @enderror" name="credit-card-number" value="{{ old('credit-card-number') }}" autofocus>
-                            </div>
-                        </div>
-                        <!-- /.credit-card-number -->    
-
-                        <div class="mb-3 row">
-                            <label for="expire_date" class="col-md-4 col-form-label text-md-end">{{ __('Expire Date') }}</label>
-                            <div class="col-md-6">
-                                <input id="expire_date" type="date" class="form-control @error('expire_date') is-invalid @enderror" name="expire_date" value="{{ old('expire_date') }} " autofocus>
-
-                            </div>
-                        </div>
-                        <!-- /.expire_date -->    
-
-                        <div class="mb-3 row">
-                            <label for="CVV" class="col-md-4 col-form-label text-md-end">{{ __('CVV*') }}</label>
-                            <div class="col-md-6">
-                                <input id="CVV" type="number" class="form-control @error('CVV') is-invalid @enderror" name="CVV" value="{{ old('CVV') }}" required autofocus>
-                            </div>
-                        </div>
-                        <!-- /.CVV -->    
-                    </div>
-                    <button class="btn bck-orange rounded-pill text-white mt-4" type="submit"><span>Request payment method</span></button>
+                    <div id="dropin-container"></div>
+            
+                    <input id="nonce" name="payment_method_nonce" type="hidden" />
+                   
+                   
+                    <button id="submit-button" class="button button--small button--green" type="submit">Purchase</button>
                 </form>
             </div>
         </div>
     </div>
-@endsection
 
+<script src="https://js.braintreegateway.com/web/dropin/1.13.0/js/dropin.min.js"></script>
 <script>
-    var valid = require("card-validator");
-
-var numberValidation = valid.number("4111");
-
-if (!numberValidation.isPotentiallyValid) {
-  renderInvalidCardNumber();
-}
-
-if (numberValidation.card) {
-  console.log(numberValidation.card.type); // 'visa'
-}
+  var form = document.querySelector('#payment-form');
+  var client_token = "sandbox_g42y39zw_348pk9cgf3bgyw2b";
+  braintree.dropin.create({
+    authorization: client_token,
+    selector: '#dropin-container',
+  }, function (createErr, instance) {
+    if (createErr) {
+      console.log('Create Error', createErr);
+      return;
+    }
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      instance.requestPaymentMethod(function (err, payload) {
+        if (err) {
+          console.log('Request Payment Method Error', err);
+          return;
+        }
+        // Add the nonce to the form and submit
+        document.querySelector('#nonce').value = payload.nonce;
+        form.submit();
+      });
+    });
+  });
 </script>
+@endsection
