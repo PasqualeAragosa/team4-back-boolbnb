@@ -33,7 +33,7 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     ]);
     Route::resource('messages', MessageController::class)->except(['create', 'edit', 'update', 'destroy', 'store']);
 
-    Route::resource('sponsorships', SponsorshipController::class)->except(['create', 'store', 'show', 'edit', 'update', 'destroy']);
+    Route::resource('sponsorships', SponsorshipController::class)->except(['create', 'show', 'edit', 'update', 'destroy']);
 });
 
 
