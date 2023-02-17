@@ -47,11 +47,12 @@ class SponsorshipController extends Controller
      */
     public function store(StoreSponsorshipRequest $request)
     {
-        dd($request);
-        if ($request->has('sponsorships')) {
+        $pippo = $request;
+        dd($pippo);
 
+        if ($pippo->has('properties')) {
             $sponsor = new Sponsorship();
-            $sponsor->properties()->attach(['properties']);
+            $sponsor->properties()->attach($pippo['properties']);
         }
 
 
