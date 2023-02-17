@@ -48,12 +48,15 @@ class SponsorshipController extends Controller
     public function store(StoreSponsorshipRequest $request)
     {
         $pippo = $request;
-        dd($pippo);
+        $sponsor = new Sponsorship();
 
-        if ($pippo->has('properties')) {
-            $sponsor = new Sponsorship();
-            $sponsor->properties()->attach($pippo['properties']);
+        if ($pippo->has('property_id')) {
+
+            dd($pippo);
+            $sponsor->properties()->attach($pippo['property_id']);
         }
+
+
 
 
         return redirect()->route('admin.properties.index')->with(["message" => "Sponsorizzazione avvenuta con successo!"]);
