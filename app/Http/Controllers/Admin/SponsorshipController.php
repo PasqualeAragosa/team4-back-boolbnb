@@ -56,7 +56,17 @@ class SponsorshipController extends Controller
             $sponsor->properties()->attach($pippo['property_id']);
         }
 
+        // $pippo = $request;
+        // //dd($pippo);
+        // $pippo['start_date'] = Carbon::now()->toDateTimeString();
+        // $sponsorships = Sponsorship::all();
+        // $duration = $sponsorships->duration;
+        // $pippo['end_date'] = date('Y-m-d H:i:s', strtotime($pippo['start_date'] . ' + ' . $duration . ' hours'));
 
+        // if ($pippo->has('properties')) {
+        //     $sponsor = new Sponsorship();
+        //     $sponsor->properties()->attach(array("property_id" => $pippo['property_id'], "start_date" => $pippo['start_date'], "end_date" => $pippo['end_date']));
+        // }
 
 
         return redirect()->route('admin.properties.index')->with(["message" => "Sponsorizzazione avvenuta con successo!"]);
