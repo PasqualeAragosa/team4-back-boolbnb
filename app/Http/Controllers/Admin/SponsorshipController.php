@@ -7,7 +7,9 @@ use App\Http\Requests\StoreSponsorshipRequest;
 use App\Http\Requests\UpdateSponsorshipRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Property;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Braintree\Gateway;
 
 
 class SponsorshipController extends Controller
@@ -23,7 +25,8 @@ class SponsorshipController extends Controller
         $properties = Property::where('user_id', $user)->get();
         $sponsorships = Sponsorship::all();
 
-        return view('admin.sponsorships.index', compact('properties', 'sponsorships'));
+
+        return view('admin.sponsorships.index', compact('properties', 'sponsorships',));
     }
 
     /**
@@ -44,7 +47,15 @@ class SponsorshipController extends Controller
      */
     public function store(StoreSponsorshipRequest $request)
     {
-        //
+        dd($request);
+        if ($request->has('sponsorships')) {
+
+            $sponsor = new Sponsorship();
+            $sponsor->properties()->attach(['properties']);
+        }
+
+
+        return redirect()->route('admin.properties.index')->with(["message" => "Sponsorizzazione avvenuta con successo!"]);
     }
 
     /**

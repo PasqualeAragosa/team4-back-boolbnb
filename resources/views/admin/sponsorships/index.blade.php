@@ -23,7 +23,7 @@
                     </ul>
                 </div>
             @endif
-            <form method="POST" id="payment-form" action="">
+            <form method="post" id="payment-form" action="">
         
                 @csrf
                 @method('POST')
@@ -55,7 +55,7 @@
                                         <div class="range text-center border border-secondary rounded-3 p-3">
                                             <h6 class="text-secondary">{{$sponsorships[0]->duration}} Hours</h6>
                                         <p class="text-secondary">{{$sponsorships[0]->price}} &euro;</p>
-                                        <input type="radio" class="btn-check" name="options-outlined" id="secondary-outlined" autocomplete="off" checked>
+                                        <input type="radio" class="btn-check" name="options-outlined" id="secondary-outlined" autocomplete="off" value="{{$sponsorships[0]}}" checked>
                                         <label class="btn btn-outline-secondary" for="secondary-outlined">{{$sponsorships[0]->name}}</label>
                                         </div>
                                     </div>
@@ -64,7 +64,7 @@
                                         <div class="range text-center border border-warning rounded-3 p-3">
                                             <h6 class="text-warning">{{$sponsorships[1]->duration}} Hours</h6>
                                         <p class="text-warning">{{$sponsorships[1]->price}} &euro;</p>
-                                        <input type="radio" class="btn-check" name="options-outlined" id="warning-outlined" autocomplete="off">
+                                        <input type="radio" class="btn-check" name="options-outlined" id="warning-outlined" autocomplete="off" value="{{$sponsorships[1]->id}}">
                                         <label class="btn btn-outline-warning" for="warning-outlined">{{$sponsorships[1]->name}}</label>
                                         </div>
                                     </div>
@@ -73,7 +73,7 @@
                                         <div class="range text-center border border-primary rounded-3 py-3">
                                             <h6 class="text-primary">{{$sponsorships[2]->duration}} Hours</h6>
                                         <p class="text-primary">{{$sponsorships[2]->price}} &euro;</p>
-                                        <input type="radio" class="btn-check" name="options-outlined" id="primary-outlined" autocomplete="off">
+                                        <input type="radio" class="btn-check" name="options-outlined" id="primary-outlined" value="{{$sponsorships[2]->id}}" autocomplete="off">
                                         <label class="btn btn-outline-primary" for="primary-outlined">{{$sponsorships[2]->name}}</label>
                                         </div>
                                         
@@ -88,14 +88,13 @@
             
                     <input id="nonce" name="payment_method_nonce" type="hidden" />
                    
-                   
                     <button id="submit-button" class="button button--small button--green" type="submit">Purchase</button>
                 </form>
             </div>
         </div>
     </div>
 
-<script src="https://js.braintreegateway.com/web/dropin/1.13.0/js/dropin.min.js"></script>
+<script src="https://js.braintreegateway.com/web/dropin/1.31.2/js/dropin.min.js"></script>
 <script>
   var form = document.querySelector('#payment-form');
   var client_token = "sandbox_g42y39zw_348pk9cgf3bgyw2b";
