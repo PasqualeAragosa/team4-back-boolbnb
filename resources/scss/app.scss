@@ -134,3 +134,10 @@ input.error {
     border: solid 2px red;
     border-radius: 10px;
 }
+
+.welcome {
+    background-image: url(/public/images/bck_back.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
