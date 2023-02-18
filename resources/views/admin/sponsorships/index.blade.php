@@ -35,7 +35,7 @@
                             <label for="property_id" class="form-label text-orange">
                                 <h5>Please, select your Property</h5>
                             </label>
-                            <select class="form-select form-select-md " name="property_id" id="property_id">
+                            <select class="form-select form-select-md " name="property" id="property">
                                 <option disabled value=''>Select one</option>
                                 @forelse ($properties as $property)
                                 <option value="{{ $property->id }}" {{ $property->id == old('property_id') ? 'selected' : '' }}>
@@ -57,7 +57,7 @@
                                     <div class="range text-center border border-secondary rounded-3 p-3">
                                         <h6 class="text-secondary">{{$sponsorships[0]->duration}} Hours</h6>
                                         <p class="text-secondary">{{$sponsorships[0]->price}} &euro;</p>
-                                        <input type="radio" class="btn-check" name="sponsorship_id" id="secondary-outlined" autocomplete="off" value="{{$sponsorships[0]->id}}" checked>
+                                        <input type="radio" class="btn-check" name="sponsorship" id="secondary-outlined" autocomplete="off" value="{{$sponsorships[0]->id}}" checked>
                                         <label class="btn btn-outline-secondary" for="secondary-outlined">{{$sponsorships[0]->name}}</label>
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                                     <div class="range text-center border border-warning rounded-3 p-3">
                                         <h6 class="text-warning">{{$sponsorships[1]->duration}} Hours</h6>
                                         <p class="text-warning">{{$sponsorships[1]->price}} &euro;</p>
-                                        <input type="radio" class="btn-check" name="sponsorship_id" id="warning-outlined" autocomplete="off" value="{{$sponsorships[1]->id}}">
+                                        <input type="radio" class="btn-check" name="sponsorship" id="warning-outlined" autocomplete="off" value="{{$sponsorships[1]->id}}">
                                         <label class="btn btn-outline-warning" for="warning-outlined">{{$sponsorships[1]->name}}</label>
                                     </div>
                                 </div>
@@ -75,7 +75,7 @@
                                     <div class="range text-center border border-primary rounded-3 py-3">
                                         <h6 class="text-primary">{{$sponsorships[2]->duration}} Hours</h6>
                                         <p class="text-primary">{{$sponsorships[2]->price}} &euro;</p>
-                                        <input type="radio" class="btn-check" name="sponsorship_id" id="primary-outlined" value="{{$sponsorships[2]->id}}" autocomplete="off">
+                                        <input type="radio" class="btn-check" name="sponsorship" id="primary-outlined" value="{{$sponsorships[2]->id}}" autocomplete="off">
                                         <label class="btn btn-outline-primary" for="primary-outlined">{{$sponsorships[2]->name}}</label>
                                     </div>
 
@@ -109,6 +109,9 @@
             return;
         }
         form.addEventListener('submit', function(event) {
+
+
+
             event.preventDefault();
             instance.requestPaymentMethod(function(err, payload) {
                 if (err) {
@@ -117,7 +120,9 @@
                 }
                 // Add the nonce to the form and submit
                 document.querySelector('#nonce').value = payload.nonce;
-                form.submit();
+                setTimeout(function() {
+                    form.submit();
+                }, 1000);
             });
         });
     });

@@ -17,6 +17,6 @@ class Sponsorship extends Model
      */
     public function properties(): BelongsToMany
     {
-        return $this->belongsToMany(Property::class);
+        return $this->belongsToMany(Property::class)->withPivot('start_date', 'end_date');
     }
 }

@@ -88,8 +88,10 @@ class PropertyController extends Controller
         // create property
         $property = Property::create($val_data);
 
+
         // attach the selected amenities
         if ($request->has('amenities')) {
+
             $property->amenities()->attach($val_data['amenities']);
         }
 
@@ -149,7 +151,7 @@ class PropertyController extends Controller
 
             $coordinates = $response->json();
             //dd($coordinates);
-            if($coordinates['results'] == null){
+            if ($coordinates['results'] == null) {
                 abort(404);
             }
 

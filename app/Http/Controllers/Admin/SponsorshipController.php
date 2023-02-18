@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Property;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Braintree\Gateway;
 
 
 class SponsorshipController extends Controller
@@ -47,29 +46,29 @@ class SponsorshipController extends Controller
      */
     public function store(StoreSponsorshipRequest $request)
     {
-        $pippo = $request;
-        $sponsor = new Sponsorship();
 
-        if ($pippo->has('property_id')) {
 
-            dd($pippo);
-            $sponsor->properties()->attach($pippo['property_id']);
+        $sponsorship = new Sponsorship();
+        $sponsorship->id = $request['sponsorship'];
+        $duration = 24;
+
+        if ($sponsorship->id == 2) {
+            $duration = 72;
+        } else if ($sponsorship->id == 3) {
+            $duration = 144;
         }
 
-        // $pippo = $request;
-        // //dd($pippo);
-        // $pippo['start_date'] = Carbon::now()->toDateTimeString();
-        // $sponsorships = Sponsorship::all();
-        // $duration = $sponsorships->duration;
-        // $pippo['end_date'] = date('Y-m-d H:i:s', strtotime($pippo['start_date'] . ' + ' . $duration . ' hours'));
+        $start_date = Carbon::now()->toDateTimeString();
+        $end_date = date('Y-m-d H:i:s', strtotime($request['start_date'] . ' + ' . $duration . ' hours'));
 
-        // if ($pippo->has('properties')) {
-        //     $sponsor = new Sponsorship();
-        //     $sponsor->properties()->attach(array("property_id" => $pippo['property_id'], "start_date" => $pippo['start_date'], "end_date" => $pippo['end_date']));
-        // }
+        if ($request->has('property')) {
 
+            $property_id = $request['property'];
 
-        return redirect()->route('admin.properties.index')->with(["message" => "Sponsorizzazione avvenuta con successo!"]);
+            $sponsorship->properties()->attach($property_id, ['start_date' => $start_date, 'end_date' => $end_date]);
+        }
+
+        return redirect()->route('admin.properties.index')->with(["message" => "Congratulazioni! Hai attivato la sponsorizzazione da $duration ore"]);
     }
 
     /**
