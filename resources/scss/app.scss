@@ -157,22 +157,33 @@ input.error {
     -webkit-appearance: none;
     -moz-appearance: none;
     display: inline-block;
-  }
-  
-  .button--small {
+}
+
+.button--small {
     padding: 10px 20px;
     font-size: 0.875rem;
-  }
-  
-  .button--green {
+}
+
+.button--green {
     outline: none;
     background-color: #64d18a;
     border-color: #64d18a;
     color: white;
     transition: all 200ms ease;
-  }
-  
-  .button--green:hover {
+}
+
+.button--green:hover {
     background-color: #8bdda8;
     color: white;
-  }
+}
+
+.card-properties {
+    position: relative;
+
+    .counter {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        max-width: fit-content;
+    }
+}
