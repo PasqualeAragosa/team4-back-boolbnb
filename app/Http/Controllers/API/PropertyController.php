@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Property;
+use App\Models\Amenity;
 use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller
@@ -55,7 +56,14 @@ class PropertyController extends Controller
         return json_encode($propertiesInRange);
     }
 
-    public function filteredSearch($lng, $lat, $radius, $rooms, $beds,)
+    public function getAmenities()
+    {
+        $amenities = Amenity::all();
+
+        return json_encode($amenities);
+    }
+
+    public function filteredSearch($lng, $lat, $radius, $rooms, $beds, $amenities)
     {
 
         $properties = Property::with(['type', 'amenities', 'sponsorships', 'views', 'messages'])->orderByDesc('id')->paginate(8);
@@ -63,18 +71,37 @@ class PropertyController extends Controller
         $filteredProperties = [];
 
         foreach ($properties as $property) {
+            $amenities_list = $property->amenities;
+
+            $amenities_ids = [];
+
+            foreach ($amenities_list as $amenity) {
+                array_push($amenities_ids, $amenity);
+                //dd($amenity->id);
+            }
+
+            //dd($amenities_ids);
+            //dd($amenities_ids[0]->name);
+            //dd($property);
+            //dd($amenities_list);
 
             // raggio di ricerca default 20km
             if ($this->haversineGreatCircleDistance($lat, $lng, $property->latitude, $property->longitude) < $radius && $property->rooms_num >= $rooms && $property->beds_num >= $beds) {
-                // foreach ($amenities as $amenity) {
-                //     if (in_array($amenity, $property->amenities)) {
-                //         array_push($filteredProperties, $property);
-                //     }
-                // }
-                array_push($filteredProperties, $property);
+
+                $amenities_array = explode(',', $amenities);
+
+                foreach ($amenities_ids as $amenity) {
+                    //dd('ciao');
+                    //dd($amenity->name, $amenities_array);
+                    if (in_array($amenity->name, $amenities_array)) {
+
+                        array_push($filteredProperties, $property);
+                    }
+                }
             }
         }
 
+        //dd($filteredProperties);
         return json_encode($filteredProperties);
     }
 

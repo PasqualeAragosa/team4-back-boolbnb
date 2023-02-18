@@ -12,7 +12,7 @@
 <div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
     @foreach($properties as $property)
     <div class="col">
-        <div class="card shadow border-0" style="height:100%">
+        <div class="card card-properties shadow border-0" style="height:100%">
             <div class="image overflow-hidden">
                 @if($property->image)
                 <img class="card-img-top img-fluid photo-zoom" src="{{asset('storage/' . $property->image)}}" alt="">
@@ -20,7 +20,24 @@
                 <img class="card-img-top img-fluid" src="/images/placeholder.png" alt="">
                 @endif
             </div>
-            <div class="card-body p-4">
+            
+            <!--if(property->sponsorship)-->
+            <div class="counter d-flex p-2 bg-warning text-white">
+                <div class="counter_block dd">
+                    <div id="days" class="cb_number"></div>
+                </div>
+                <div class="counter_block hh">
+                    <div id="hours" class="cb_number">6</div>
+                </div>
+                <div class="counter_block mm">
+                    <div id="minutes" class="cb_number">12</div>
+                </div>
+                <div class="counter_block ss">
+                    <div id="seconds" class="cb_number">20</div>
+                </div>
+            </div>
+            <!--endif-->
+            <div class="card-body  p-4">
                 <h5 class="card-title">{{$property->title}}</h5>
                 <p class="card-text">{{$property->address}}</p>
                 @if($property->visibility)
