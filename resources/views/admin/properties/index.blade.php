@@ -15,11 +15,12 @@
         <div class="card card-properties shadow border-0" style="height:100%">
             <div class="image overflow-hidden">
                 @if($property->image)
-                <img class="card-img-top img-fluid photo-zoom"  src="{{asset('storage/' . $property->image)}}" alt="">
+                <img class="card-img-top img-fluid photo-zoom" src="{{asset('storage/' . $property->image)}}" alt="">
                 @else
                 <img class="card-img-top img-fluid" src="/images/placeholder.png" alt="">
                 @endif
             </div>
+            
             <!--if(property->sponsorship)-->
             <div class="counter d-flex p-2 bg-warning text-white">
                 <div class="counter_block dd">
@@ -58,7 +59,7 @@
                     <i class="fa-solid fa-trash-can"></i>
                 </button>
                 @include('partials.modal')
-                 <!-- /.Delete -->
+                <!-- /.Delete -->
             </div>
         </div>
     </div>
