@@ -10,7 +10,6 @@ use App\Models\Property;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
-
 class SponsorshipController extends Controller
 {
     /**
@@ -63,9 +62,13 @@ class SponsorshipController extends Controller
 
         if ($request->has('property')) {
 
-            $property_id = $request['property'];
-
-            $sponsorship->properties()->attach($property_id, ['start_date' => $start_date, 'end_date' => $end_date]);
+            $sponsorship->properties()->attach(
+                $request['property'],
+                [
+                    'start_date' => $start_date,
+                    'end_date' => $end_date
+                ]
+            );
         }
 
         return redirect()->route('admin.properties.index')->with(["message" => "Congratulazioni! Hai attivato la sponsorizzazione da $duration ore"]);

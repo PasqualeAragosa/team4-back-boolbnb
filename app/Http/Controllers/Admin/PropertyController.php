@@ -11,6 +11,7 @@ use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller
 {
@@ -25,6 +26,15 @@ class PropertyController extends Controller
         $user = Auth::id();
         $properties = Property::orderByDesc('id')->where('user_id', $user)->paginate(8);
 
+        $pivotProperty = DB::table('property_sponsorship')->pluck('property_id');
+        $pivotStartDate = DB::table('property_sponsorship')->pluck('start_date');
+        $pivotEndDate = DB::table('property_sponsorship')->pluck('end_date');
+
+        if (DB::table('property_sponsorship')->exists()) {
+            dd($pivotProperty, $pivotStartDate, $pivotEndDate);
+        } else {
+            dd(false);
+        }
 
         return view('admin.properties.index', compact('properties'));
     }

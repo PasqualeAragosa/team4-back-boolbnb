@@ -15,12 +15,12 @@
         <div class="card shadow border-0" style="height:100%">
             <div class="image overflow-hidden">
                 @if($property->image)
-                <img class="card-img-top img-fluid photo-zoom"  src="{{asset('storage/' . $property->image)}}" alt="">
+                <img class="card-img-top img-fluid photo-zoom" src="{{asset('storage/' . $property->image)}}" alt="">
                 @else
                 <img class="card-img-top img-fluid" src="/images/placeholder.png" alt="">
                 @endif
             </div>
-            <div class="card-body  p-4">
+            <div class="card-body p-4">
                 <h5 class="card-title">{{$property->title}}</h5>
                 <p class="card-text">{{$property->address}}</p>
                 @if($property->visibility)
@@ -42,7 +42,7 @@
                     <i class="fa-solid fa-trash-can"></i>
                 </button>
                 @include('partials.modal')
-                 <!-- /.Delete -->
+                <!-- /.Delete -->
             </div>
         </div>
     </div>
