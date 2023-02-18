@@ -25,5 +25,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/properties', [PropertyController::class, 'index']);
 Route::get('/properties/{property:slug}', [PropertyController::class, 'show']);
 Route::get('/properties/search/lng={lng}/lat={lat}/radius={radius}', [PropertyController::class, 'searchProperties']);
-Route::get('/properties/filteredsearch/lng={lng}/lat={lat}/radius={radius}/rooms={rooms}/beds={beds}', [PropertyController::class, 'filteredSearch']);
+Route::get('/properties/filteredsearch/lng={lng}/lat={lat}/radius={radius}/rooms={rooms}/beds={beds}/amenities={amenities}', [PropertyController::class, 'filteredSearch']);
 Route::post('/messages', [MessageController::class, 'store']);
