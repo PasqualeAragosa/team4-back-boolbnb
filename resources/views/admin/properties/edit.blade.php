@@ -45,6 +45,7 @@
     <div class="mb-3">
         <label for="rooms_num" class="form-label text-orange">Rooms</label>
         <input type="number" name="rooms_num" id="rooms_num" class="form-control @error('rooms_num') is-invalid @enderror" placeholder="4" aria-describedby="roomHlper" value="{{old('rooms_num', $property->rooms_num)}}" min="1" max="100">
+        &ast;
         <small id="roomHlper" class="text-muted">Update The Total Rooms</small>
     </div>
     @error('rooms_num')
@@ -57,6 +58,7 @@
     <div class="mb-3">
         <label for="beds_num" class="form-label text-orange">Beds</label>
         <input type="number" name="beds_num" id="beds_num" class="form-control @error('beds_num') is-invalid @enderror" placeholder="2" aria-describedby="bedHlper" value="{{old('beds_num', $property->beds_num)}}" min="1" max="100">
+        &ast;
         <small id="bedHlper" class="text-muted">Update the Total Beds</small>
     </div>
     @error('beds_num')
@@ -129,6 +131,7 @@
             <h4>No amenities added yet in the database</h4>
             @endforelse
         </div>
+        &ast;
         <small id="amenityHlper" class="text-muted">Please check at least one Amenity</small>
     </div>
     <!-- /.Amenity -->

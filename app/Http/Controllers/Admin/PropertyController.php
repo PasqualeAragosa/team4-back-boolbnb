@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 class PropertyController extends Controller
 {
@@ -27,16 +28,15 @@ class PropertyController extends Controller
         $properties = Property::orderByDesc('id')->where('user_id', $user)->paginate(8);
 
         $pivotProperty = DB::table('property_sponsorship')->pluck('property_id');
-        $pivotStartDate = DB::table('property_sponsorship')->pluck('start_date');
-        $pivotEndDate = DB::table('property_sponsorship')->pluck('end_date');
+        $pivotSponsorship = DB::table('property_sponsorship')->pluck('sponsorship_id');
+
+        $sponsored = false;
 
         if (DB::table('property_sponsorship')->exists()) {
-            dd($pivotProperty, $pivotStartDate, $pivotEndDate);
-        } else {
-            dd(false);
+            $sponsored = true;
         }
 
-        return view('admin.properties.index', compact('properties'));
+        return view('admin.properties.index', compact('properties', 'pivotProperty', 'pivotSponsorship', 'sponsored'));
     }
 
     /**

@@ -20,23 +20,28 @@
                 <img class="card-img-top img-fluid" src="/images/placeholder.png" alt="">
                 @endif
             </div>
-            
-            <!--if(property->sponsorship)-->
+
+            <!-- Banner Sponsorizzazione -->
+            @if($sponsored)
+            @foreach($pivotProperty as $key => $el)
+            @if($property->id === $el)
             <div class="counter d-flex p-2 bg-warning text-white">
-                <div class="counter_block dd">
-                    <div id="days" class="cb_number"></div>
-                </div>
-                <div class="counter_block hh">
-                    <div id="hours" class="cb_number">6</div>
-                </div>
-                <div class="counter_block mm">
-                    <div id="minutes" class="cb_number">12</div>
-                </div>
-                <div class="counter_block ss">
-                    <div id="seconds" class="cb_number">20</div>
+                <div class="counter_block">
+                    <div class="cb_number">
+                        @if($pivotSponsorship[$key] == 1)
+                        Sponsored 24 H
+                        @elseif ($pivotSponsorship[$key] == 2)
+                        Sponsored 72 H
+                        @elseif ($pivotSponsorship[$key] == 3)
+                        Sponsored 144 H
+                        @endif
+                    </div>
                 </div>
             </div>
-            <!--endif-->
+            @endif
+            @endforeach
+            @endif
+
             <div class="card-body  p-4">
                 <h5 class="card-title">{{$property->title}}</h5>
                 <p class="card-text">{{$property->address}}</p>
