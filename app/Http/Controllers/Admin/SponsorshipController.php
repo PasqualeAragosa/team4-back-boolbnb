@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Property;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SponsorshipController extends Controller
 {
@@ -70,6 +71,8 @@ class SponsorshipController extends Controller
                 ]
             );
         }
+
+        // TO-DO se la sponsorizzazione già esiste allora non aggiornare i campi
 
         return redirect()->route('admin.properties.index')->with(["message" => "Congratulazioni! Hai attivato la sponsorizzazione da $duration ore"]);
     }

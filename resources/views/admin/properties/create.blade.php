@@ -22,12 +22,14 @@
     <div class="mb-3">
         <label for="rooms_num" class="form-label text-orange">Rooms</label>
         <input type="number" name="rooms_num" id="rooms_num" class="form-control @error('rooms_num') is-invalid @enderror" placeholder="4" aria-describedby="helpRooms_num" value="{{old('rooms_num')}}" min="1" max="100" required>
+        &ast;
         <small id="helpRooms_num" class="text-muted">Please Enter The Total Rooms</small>
     </div>
     <!-- /.Rooms_num -->
     <div class="mb-3">
         <label for="beds_num" class="form-label text-orange">Beds</label>
         <input type="number" name="beds_num" id="beds_num" class="form-control @error('beds_num') is-invalid @enderror" placeholder="2" aria-describedby="helpBeds_num" value="{{old('beds_num')}}" min="1" max="100" required>
+        &ast;
         <small id="helpBeds_num" class="text-muted">Please Enter The Total Beds</small>
     </div>
     <!-- /.Beds_num -->
@@ -74,6 +76,8 @@
             <h4>No amenities added yet in the database</h4>
             @endforelse
         </div>
+        &ast;
+        <small id="helpAmenity" class="text-muted">Please check at least one Amenity</small>
     </div>
     <!-- /.Amenity -->
 
