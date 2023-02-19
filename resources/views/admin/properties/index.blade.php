@@ -8,6 +8,7 @@
     </a>
 </div>
 @include('partials.message')
+@include('partials.danger')
 
 <div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
     @foreach($properties as $property)

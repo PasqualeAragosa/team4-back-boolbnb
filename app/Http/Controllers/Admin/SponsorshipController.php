@@ -46,7 +46,7 @@ class SponsorshipController extends Controller
      */
     public function store(StoreSponsorshipRequest $request)
     {
-
+        $properties = Property::where('user_id', Auth::id())->get();
 
         $sponsorship = new Sponsorship();
         $sponsorship->id = $request['sponsorship'];
@@ -61,20 +61,28 @@ class SponsorshipController extends Controller
         $start_date = Carbon::now()->toDateTimeString();
         $end_date = date('Y-m-d H:i:s', strtotime($request['start_date'] . ' + ' . $duration . ' hours'));
 
-        if ($request->has('property')) {
 
-            $sponsorship->properties()->attach(
-                $request['property'],
-                [
-                    'start_date' => $start_date,
-                    'end_date' => $end_date
-                ]
-            );
+        foreach ($properties as $property) {
+            if ($property->id == $request['property']) {
+                $propertyTitle = $property->title;
+            }
         }
 
-        // TO-DO se la sponsorizzazione già esiste allora non aggiornare i campi
+        if (DB::table('property_sponsorship')->where('property_id', $request['property'])->exists()) {
+            return redirect()->route('admin.properties.index')->with(["danger" => "Sorry! The sponsorship is already active on $propertyTitle"]);
+        } else {
+            if ($request->has('property')) {
 
-        return redirect()->route('admin.properties.index')->with(["message" => "Congratulazioni! Hai attivato la sponsorizzazione da $duration ore"]);
+                $sponsorship->properties()->attach(
+                    $request['property'],
+                    [
+                        'start_date' => $start_date,
+                        'end_date' => $end_date
+                    ]
+                );
+            }
+            return redirect()->route('admin.properties.index')->with(["message" => "Congratulations! You have activated the $duration hours sponsorship"]);
+        }
     }
 
     /**
