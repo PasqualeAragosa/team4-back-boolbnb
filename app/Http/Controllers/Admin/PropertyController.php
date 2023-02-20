@@ -28,6 +28,7 @@ class PropertyController extends Controller
         $properties = Property::orderByDesc('id')->where('user_id', $user)->paginate(8);
 
         $pivotProperty = DB::table('property_sponsorship')->pluck('property_id');
+
         $pivotSponsorship = DB::table('property_sponsorship')->pluck('sponsorship_id');
 
         $sponsored = false;

@@ -138,4 +138,31 @@ class PropertyController extends Controller
             cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
         return $angle * $earthRadius;
     }
+
+    public function sponsored()
+    {
+        // Prende tutti i property sponsorizzati
+        $pivotProperty = DB::table('property_sponsorship')->pluck('property_id');
+        $success = false;
+
+
+        // Se esistono property sponsorizzati li mostro
+        if (DB::table('property_sponsorship')->exists()) {
+            $success = true;
+        }
+
+        $properties = Property::with(['type', 'amenities', 'sponsorships', 'views', 'messages'])->get();
+        $propertyWithSponsor = [];
+
+        foreach ($properties as $property) {
+            if ($pivotProperty->contains($property->id)) {
+                array_push($propertyWithSponsor, $property);
+            }
+        }
+
+        return response()->json([
+            'success' => $success,
+            'results' => $propertyWithSponsor,
+        ]);
+    }
 }
