@@ -37,7 +37,7 @@
                     <h4 class="text-orange"><i class="fa-solid fa-hand-holding-dollar"></i> Sponsorships</h4>
                 </div>
                 <div class="card-body">
-                    <p>You have <strong class="text-orange">--</strong> sponsorized properties</p>
+                    <p>You have <strong class="text-orange">{{$sponsorships}}</strong> sponsorized properties</p>
 
                 </div>
             </div>
@@ -48,7 +48,7 @@
                     <h4 class="text-orange"><i class="fa-regular fa-envelope"></i> Messages</h4>
                 </div>
                 <div class="card-body">
-                    <p>You have <strong class="text-orange">--</strong> messages</p>
+                    <p>You have <strong class="text-orange">{{$messages}}</strong> messages</p>
 
                 </div>
             </div>
