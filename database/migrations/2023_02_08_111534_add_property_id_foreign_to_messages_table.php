@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('messages', function (Blueprint $table) {
             $table->unsignedBigInteger('property_id')->nullable()->after('id');
-            $table->foreign('property_id')->references('id')->on('properties')->onDelete('set null');
+            $table->foreign('property_id')->references('id')->on('properties')->cascadeOnDelete();
         });
     }
 
