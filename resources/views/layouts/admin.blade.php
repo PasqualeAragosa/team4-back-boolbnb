@@ -83,19 +83,19 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{Route::currentRouteName() === 'admin.projects.index' ? 'active': ''}}" href="{{route('admin.properties.index')}}">
-                                    <i class="fas fa-pencil fa-sm fa-fw"></i>
+                                    <i class="fa-solid fa-house-user"></i>
                                     <span data-feather="file" class="align-text-bottom"> Properties</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{Route::currentRouteName() === 'admin.sponsorships.index' ? 'active': ''}}" href="{{route('admin.sponsorships.index')}}">
-                                    <i class="fas fa-pencil fa-sm fa-fw"></i>
+                                    <i class="fa-solid fa-hand-holding-dollar"></i>
                                     <span data-feather="file" class="align-text-bottom"> Sponsorship</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{Route::currentRouteName() === 'admin.messages.index' ? 'active': ''}}" href="{{route('admin.messages.index')}}">
-                                    <i class="fas fa-pencil fa-sm fa-fw"></i>
+                                    <i class="fa-regular fa-envelope"></i>
                                     <span data-feather="file" class="align-text-bottom"> Messages</span>
                                 </a>
                             </li>
