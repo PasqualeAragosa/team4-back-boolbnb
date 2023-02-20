@@ -101,7 +101,7 @@ class PropertyController extends Controller
 
 
                     // dd($amenities_names == $amenities_array);
-                    if ($amenities_names == $amenities_array) {
+                    if (!array_diff($amenities_array, $amenities_names)) {
 
                         if (!in_array($property, $filteredProperties)) {
                             // dd('ciao', $filteredProperties);
