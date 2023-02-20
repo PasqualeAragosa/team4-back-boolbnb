@@ -86,7 +86,7 @@
                         <!-- /.Sponsorship -->
                     </div>
                 </div>
-                <div id="dropin-container"></div>
+                <div id="dropin-container" class="w-75" style="margin: 0 auto"></div>
 
                 <input id="nonce" name="payment_method_nonce" type="hidden" />
 
