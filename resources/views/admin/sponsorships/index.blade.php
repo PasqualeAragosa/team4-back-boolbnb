@@ -29,7 +29,7 @@
                 @method('POST')
 
 
-                <div class="row row-cols-1 g-4 py-4">
+                <div class="row row-cols-1 g-4 py-4 pb-4">
                     <div class="col ">
                         <div class="property mb-3 px-4">
                             <label for="property_id" class="form-label text-orange">
