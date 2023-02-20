@@ -115,7 +115,10 @@ class PropertyController extends Controller
 
 
         //dd($filteredProperties);
-        return json_encode($filteredProperties);
+        return response()->json([
+            'success' => true,
+            'results' => $filteredProperties
+        ]);
     }
 
 
