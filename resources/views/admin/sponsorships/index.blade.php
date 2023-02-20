@@ -5,7 +5,7 @@
     <h1 class="text-orange text-center">Choose Your Sponsorship</h1>
 </div>
 
-<div class="payments text-center px-5">
+<div class="payments text-center px-5 pb-5">
     <div class="wrapper px-lg-5">
         <div class="checkout container">
             @if (session()->has('success_message'))
