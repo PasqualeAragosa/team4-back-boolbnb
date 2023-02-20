@@ -90,16 +90,29 @@ class PropertyController extends Controller
 
                 $amenities_array = explode(',', $amenities);
 
-                foreach ($amenities_ids as $amenity) {
-                    //dd('ciao');
-                    //dd($amenity->name, $amenities_array);
-                    if (in_array($amenity->name, $amenities_array)) {
+                $amenities_names = [];
 
-                        array_push($filteredProperties, $property);
+                foreach ($amenities_ids as $elem) {
+                    array_push($amenities_names, $elem->name);
+                }
+
+                foreach ($amenities_ids as $amenity) {
+                    // dd($amenities_names, $amenities_array);
+
+
+                    // dd($amenities_names == $amenities_array);
+                    if ($amenities_names == $amenities_array) {
+
+                        if (!in_array($property, $filteredProperties)) {
+                            // dd('ciao', $filteredProperties);
+                            array_push($filteredProperties, $property);
+                        }
                     }
                 }
             }
         }
+
+
 
         //dd($filteredProperties);
         return json_encode($filteredProperties);
