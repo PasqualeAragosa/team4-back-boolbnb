@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Carbon;
 
 class PropertyController extends Controller
 {
@@ -24,20 +23,59 @@ class PropertyController extends Controller
     public function index()
     {
 
-        $user = Auth::id();
-        $properties = Property::orderByDesc('id')->where('user_id', $user)->paginate(8);
+        // GET USER->PROPERTY
+        $properties = Property::orderByDesc('id')->where('user_id', Auth::id())->paginate(8);
 
-        $pivotProperty = DB::table('property_sponsorship')->pluck('property_id');
-
-        $pivotSponsorship = DB::table('property_sponsorship')->pluck('sponsorship_id');
-
-        $sponsored = false;
-
-        if (DB::table('property_sponsorship')->exists()) {
-            $sponsored = true;
+        // GET USER->PROPERTY->ID
+        $arrayGetPropertyUser = [];
+        $getPropertyUser = Property::where('user_id', Auth::id())->get();
+        foreach ($getPropertyUser as $value) {
+            array_push($arrayGetPropertyUser, $value->id);
         }
 
-        return view('admin.properties.index', compact('properties', 'pivotProperty', 'pivotSponsorship', 'sponsored'));
+        // GET PROPERTY->ID->SPONSORORED
+        $arrayPivotProperty = [];
+        $pivotProperty = DB::table('property_sponsorship')->pluck('property_id');
+        foreach ($pivotProperty as $value) {
+            array_push($arrayPivotProperty, $value);
+        }
+
+        // GET USER->PROPERTY->ID->SPONSORORED
+        $propertySponsored = array_intersect($arrayGetPropertyUser, $arrayPivotProperty);
+
+        // GET USER->PROPERTY->ID without USER->PROPERTY->ID->SPONSORORED
+        $propertiesWithoutSponsorship = array_diff($arrayGetPropertyUser, $propertySponsored);
+        $propertiesWithoutSponsorship = array_values($propertiesWithoutSponsorship);
+
+        // GET PROPERTY->SPONSORED & PROPERTY->NOT_SPONSORED
+        $hasSponsored = [];
+        $hasNoSponsored = [];
+        foreach ($properties as $property) {
+
+            foreach ($propertiesWithoutSponsorship as $value) {
+
+                if ($property->id == $value) {
+                    array_push($hasNoSponsored, $property);
+                }
+            }
+
+            foreach ($propertySponsored as $value) {
+
+                if ($property->id == $value) {
+                    array_push($hasSponsored, $property);
+                }
+            }
+        }
+
+        // GET SPONSORSHIP->ID
+        $arrayPivotSponsorship = [];
+        $pivotSponsorship = DB::table('property_sponsorship')->pluck('sponsorship_id');
+        foreach ($pivotSponsorship as $value) {
+            array_push($arrayPivotSponsorship, $value);
+        }
+        //dd($arrayPivotSponsorship);
+
+        return view('admin.properties.index', compact('properties', 'hasNoSponsored', 'hasSponsored', 'pivotProperty', 'pivotSponsorship'));
     }
 
     /**
