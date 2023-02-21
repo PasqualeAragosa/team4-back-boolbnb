@@ -137,7 +137,7 @@ input.error {
 }
 
 .welcome {
-    background-image: url(/public/images/bck_back.png);
+    background-image: url(/public/images/banner_1.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -187,4 +187,18 @@ input.error {
         right: 10px;
         max-width: fit-content;
     }
+}
+
+.carousel-caption {
+    right: 0 !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 3rem !important;
+    height: 3rem !important;
+    color: #ff8d34 !important;
 }
