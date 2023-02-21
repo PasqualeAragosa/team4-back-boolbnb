@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="content-header d-flex justify-content-between align-items-center py-5">
+<div class="content-header d-flex flex-column flex-md-row justify-content-between align-items-center py-5">
     <h1 class="text-orange">Properties</h1>
     <a class="btn bck-orange rounded-pill text-white px-3" href="{{route('admin.properties.create')}}" role="button">
-        Add property <i class="fa-solid fa-plus"></i>
+        Add <i class="fa-solid fa-plus"></i>
     </a>
 </div>
 @include('partials.message')
 @include('partials.danger')
 
-<div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 pb-5">
     @foreach($properties as $property)
     <div class="col">
         <div class="card card-properties shadow border-0" style="height:100%">

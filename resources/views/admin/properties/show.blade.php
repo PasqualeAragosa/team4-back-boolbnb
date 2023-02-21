@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="content-header p-5 mb-4">
+<div class="content-header p-5">
     <div class="row row-cols-1 row-cols-md-2">
         <div class="col d-flex justify-content-center align-items-center">
             <div class="property_title text-center px-3">
@@ -29,8 +29,8 @@
         </div>
     </div>
 </div>
-<div class="content-body pt-5 px-5">
-    <div class="row row-cols-1 row-cols-md-2">
+<div class="content-body p-5">
+    <div class="row">
         <div class="col text-center">
             <div class="info d-flex justify-content-around mb-3">
                 <h4 class="text-orange"><i class="fa-solid fa-door-closed"></i> {{$property->rooms_num}}</h4>
@@ -41,11 +41,11 @@
                 {{$property->description}}
             </div>
              <!-- type -->
-    <div class="type">
-        <span>Type:</span>
-        {{ $property->type ? $property->type->name : 'No type'}}
-    </div>
-    <!-- /.type -->
+             <div class="type">
+                <h5 class="text-orange">Type:</h5>
+                {{ $property->type ? $property->type->name : 'No type'}}
+            </div>
+            <!-- /.type -->
             <div class="amenities">
                 <h5 class="text-orange">Amenities:</h5>
                 @if(count($property->amenities) > 0 )
@@ -60,11 +60,6 @@
                 @endif
             
             </div>
-        </div>
-        <div class="col">
-           <div class="maps text-center">
-            ...MAPS HERE!
-           </div>
         </div>
     </div>
 

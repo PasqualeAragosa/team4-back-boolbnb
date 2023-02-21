@@ -27,18 +27,18 @@
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md  flex-nowrap px-4">
-            <div class="container-fluid">
-                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+        <nav class="navbar navbar-expand-md px-4">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="http://localhost:5173/">
                     <img class="img-fluid" style="height:77px" src="/images/logo_nav.png" alt="">
                 </a>
 
-                <button class="navbar-toggler text-white border border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler d-md-none text-white border border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa-solid fa-bars"></i>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="collapse navbar-collapse flex-md-grow-0" id="navbarSupportedContent">
+                    <ul class="navbar-nav m-auto">
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">

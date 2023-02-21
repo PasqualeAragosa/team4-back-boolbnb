@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="content-header admin-form">
+<div class="content-header admin-form py-3">
     <div class="row justify-content-center">
         <div class="col">
             <div class="card py-5 border-0">
