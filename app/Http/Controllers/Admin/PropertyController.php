@@ -24,7 +24,7 @@ class PropertyController extends Controller
     {
 
         // GET USER->PROPERTY
-        $properties = Property::orderByDesc('id')->where('user_id', Auth::id())->paginate(8);
+        $properties = Property::orderByDesc('id')->where('user_id', Auth::id())->get();
 
         // GET USER->PROPERTY->ID
         $arrayGetPropertyUser = [];
