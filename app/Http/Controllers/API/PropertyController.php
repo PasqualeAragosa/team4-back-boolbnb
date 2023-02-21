@@ -15,7 +15,7 @@ class PropertyController extends Controller
     {
         return response()->json([
             'success' => true,
-            'results' => Property::with(['type', 'amenities', 'sponsorships', 'views', 'messages'])->orderByDesc('id')->paginate(8)
+            'results' => Property::with(['type', 'amenities', 'sponsorships', 'views', 'messages'])->orderByDesc('id')->get()
         ]);
     }
 
