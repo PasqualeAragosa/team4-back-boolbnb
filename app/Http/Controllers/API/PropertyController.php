@@ -66,7 +66,7 @@ class PropertyController extends Controller
     public function filteredSearch($lng, $lat, $radius, $rooms, $beds, $amenities)
     {
 
-        $properties = Property::with(['type', 'amenities', 'sponsorships', 'views', 'messages'])->orderByDesc('id')->paginate(8);
+        $properties = Property::with(['type', 'amenities', 'sponsorships', 'views', 'messages'])->orderByDesc('id')->get();
 
         $filteredProperties = [];
 
