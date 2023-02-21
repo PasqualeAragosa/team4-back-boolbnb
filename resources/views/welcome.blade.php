@@ -9,7 +9,7 @@
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 pb-5">
             <div class="col">
-                <div class="card border-0 shadow-sm">
+                <div class="card border-0 shadow-sm h-100">
                     <div class="card-body">
                         <h4 class="card-title text-orange">An experienced guest for your first booking</h4>
                         <p class="card-text">For your first booking, you can choose to welcome an experienced guest who has at least three stays and a good track record on BoolBnb.</p>
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card border-0 shadow-sm">
+                <div class="card border-0 shadow-sm h-100">
                     <div class="card-body">
                         <h4 class="card-title text-orange">Specialized support from BoolBnb</h4>
                         <p class="card-text">New Hosts get one-tap access to specially trained Community Support agents who can help with everything from account issues to billing support.</p>
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card border-0 shadow-sm">
+                <div class="card border-0 shadow-sm h-100">
                     <div class="card-body">
                         <h4 class="card-title text-orange">One-to-one guidance from a Superhost</h4>
                         <p class="card-text">We'll match you with a Superhost in your area, who'll guide you from your first question to your first guest—by phone, video call, or chat.</p>
@@ -33,7 +33,9 @@
                 </div>
             </div>
         </div>
-        <div id="carousel" class="carousel slide mb-5" data-bs-ride="carousel">
+    
+        <div id="carousel" class="carousel slide my-5" data-bs-ride="carousel">
+            <h2 class="text-orange text-center">Your questions, answered</h2>
             <div class="carousel-inner">
                 <div class="carousel-item active p-md-5" data-bs-interval="4000">
                     <img src="/images/slider_back.png" class="d-block w-100 position-relative" alt="...">
