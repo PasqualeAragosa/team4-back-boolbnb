@@ -37,7 +37,7 @@
         <header>
             <nav class="navbar  navbar-expand-md px-4">
                 <div class="container">
-                    <a class="navbar-brand d-flex align-items-center" href="#"> <img class="img-fluid" style="height:77px" src="/images/logo_nav.png" alt=""></a>
+                    <a class="navbar-brand d-flex align-items-center" href="http://localhost:5174/"> <img class="img-fluid" style="height:77px" src="/images/logo_nav.png" alt=""></a>
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
