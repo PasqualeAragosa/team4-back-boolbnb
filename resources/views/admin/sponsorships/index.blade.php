@@ -5,7 +5,7 @@
     <h1 class="text-orange text-center">Choose Your Sponsorship</h1>
 </div>
 
-<div class="payments text-center px-5 pb-5">
+<div class="payments text-center px-lg-5 pb-5">
     <div class="wrapper px-lg-5">
         <div class="checkout container">
             @if (session()->has('success_message'))
@@ -86,7 +86,7 @@
                         <!-- /.Sponsorship -->
                     </div>
                 </div>
-                <div id="dropin-container" class="w-75" style="margin: 0 auto"></div>
+                <div id="dropin-container" class="" style="margin: 0 auto; width:80%"></div>
 
                 <input id="nonce" name="payment_method_nonce" type="hidden" />
 

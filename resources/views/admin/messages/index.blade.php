@@ -7,7 +7,7 @@
         <h1 class="text-orange">Messages</h1>
     </div>
 
-    <div class="row row-cols-1 row-cols-lg-2 g-4">
+    <div class="row row-cols-1 row-cols-lg-2 g-4 pb-5">
         @forelse ($messages as $message)
         <div class="col">
             <div class="card card-messages shadow border-0 p-4" style="height:100%">

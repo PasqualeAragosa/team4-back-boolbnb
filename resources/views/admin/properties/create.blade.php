@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1 class="text-orange py-5">Create a New Property</h1>
+<h1 class="text-orange py-5 px-3">Create a New Property</h1>
 @include('partials.errors')
 <form action="{{route('admin.properties.store')}}" method="post" class="card shadow border-0 p-4 mb-5" enctype="multipart/form-data" onsubmit="return validateForm()">
     @csrf

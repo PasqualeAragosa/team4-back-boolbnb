@@ -35,8 +35,8 @@
 <body>
     <div id="app">
         <header>
-            <nav class="navbar sticky-top flex-nowrap p-0 pe-4">
-                <div class="container-fluid">
+            <nav class="navbar  navbar-expand-md px-4">
+                <div class="container">
                     <a class="navbar-brand d-flex align-items-center" href="#"> <img class="img-fluid" style="height:77px" src="/images/logo_nav.png" alt=""></a>
 
                     <ul class="navbar-nav ml-auto">
@@ -66,7 +66,7 @@
                     </ul>
 
                     <button class="navbar-toggler d-md-none collapsed mx-4" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa-solid fa-bars"></i>
+                        <i class="fa-solid fa-bars align-text-bottom"></i>
                     </button>
                 </div>
             </nav>

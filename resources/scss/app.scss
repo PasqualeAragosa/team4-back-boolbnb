@@ -38,6 +38,7 @@ input.error {
     .navbar-toggler:focus {
         box-shadow: none !important;
         color: #ffffff !important;
+        border-color: #ffffff !important;
     }
 
     .nav-link {
@@ -49,13 +50,11 @@ input.error {
     }
 
     .navbar-collapse {
-        flex-basis: 0 !important;
         flex-grow: inherit !important;
     }
 
     .dropdown-menu {
         position: absolute !important;
-        left: -100% !important;
 
         .dropdown-item:hover {
             color: #ff8d34 !important;
@@ -117,6 +116,8 @@ input.error {
 }
 
 .pagination {
+    margin-bottom: 1.75rem;
+
     .page-item {
         .page-link {
             color: #ff8d34 !important;

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="text-orange py-5">Update Property: {{$property->title}}</h1>
+<h1 class="text-orange py-5 px-3">Update Property: {{$property->title}}</h1>
 
 @if ($errors->any())
 <div class="alert alert-danger" role="alert">
